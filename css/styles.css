@@ -1,0 +1,67 @@
+*{
+   color: white; 
+}
+
+select,button{
+    color: black;
+}
+
+body{
+    background-color: grey;
+}
+
+.main-container{
+    margin-top: 20px;
+    display: flex;  
+    flex-flow: column;
+    
+}
+
+.admin-table{
+    width: 100%;
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    padding-left: 10px;
+    padding-right: 10px;      
+}
+
+.new-product-form-container{   
+    width: 100%;
+    display: flex;
+    flex-flow: row;
+    justify-content:flex-start;
+    padding-left: 10px;
+    padding-right: 10px;    
+  
+}
+
+.newProduct-form{
+    width: 30%;
+    border: solid black 1Px;
+    box-shadow: 10px 5px 5px black;
+    background-color: #454d55
+}
+
+td,tr{
+    text-align: center;
+}
+.form-title{
+    text-align: center;
+}
+.brand-container{
+    padding-left: 17px;
+}
+
+.btn.btn-primary{
+margin-bottom: 5px;
+margin-left: 3%;
+}
+
+footer{
+    height: 60px;
+    background-color: black;
+    border-top: rgba(255, 255, 255, 0.829) 1.3px solid;
+    margin-top: 1%;
+    width: 100%;
+}

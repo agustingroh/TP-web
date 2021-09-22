@@ -21,7 +21,8 @@ class ProductController{
         
     public function adminView(){
         $products =  $this->productModel->getAll();
-        $this->adminView->showAdminView($products);       
+        $brands = $this->productModel->getAllBrands();
+        $this->adminView->showAdminView($products,$brands);       
      }
 
      public function deleteProduct($id){        
