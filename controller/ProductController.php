@@ -38,7 +38,7 @@ class ProductController{
 
         $this->productModel->add($_POST['description'],$_POST['brand'],$_POST['price'],$_POST['product']);       
         header("Location: /tp/admins");
-       // die();
+        die();
             
     }
     
