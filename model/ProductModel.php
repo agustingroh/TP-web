@@ -20,6 +20,16 @@ class ProductModel
         return $products;
     }
 
+    public function getAllBrands()
+    {
+
+        $stmt = $this->db->prepare("SELECT name,brandId FROM Brand ORDER BY name ASC");
+        $stmt->execute();
+        $products = $stmt->fetchAll(PDO::FETCH_OBJ);
+        return $products;
+    }
+
+
     public function remove($id)
     {
         $stmt = $this->db->prepare("DELETE FROM Product WHERE productId=?");

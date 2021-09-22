@@ -7,7 +7,7 @@ require_once 'controller/ProductController.php';
 
 $controller = new ProductController();
 
-var_dump($_GET);
+
 
 if (!empty($_GET['action'])) {
     $action = $_GET['action'];
