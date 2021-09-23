@@ -2,16 +2,19 @@
 require_once 'model/ProductModel.php';
 require_once 'view/ProductView.php'; 
 require_once 'view/AdminView.php'; 
+require_once 'model/BrandModel.php';
 class ProductController{
 
     private $productModel;
     private $productView;
     private $adminView;
+    private $brandModel;
 
     function __construct(){
         $this->productModel = new ProductModel();
         $this->productView = new ProductView();
         $this->adminView = new AdminView();
+        $this->brandModel = new BrandModel();
     }
     
     public function getAllProducts(){
@@ -20,9 +23,8 @@ class ProductController{
     }
         
     public function adminView(){
-        $products =  $this->productModel->getAll();
-        // Llamo al modelo de marca
-        $brands = $this->productModel->getAllBrands();
+        $products =  $this->productModel->getAll();      
+        $brands = $this->brandModel->getAllBrands();
         $this->adminView->showAdminView($products,$brands);       
      }
 
@@ -36,12 +38,17 @@ class ProductController{
      public function newProduct(){     
         if(!isset($_POST['description']) && !isset($_POST['brand']) && !isset($_POST['price']) && !isset($_POST['product'])){
             echo "bad request";
-        }
-        var_dump($_POST);
+        }       
         $this->productModel->add($_POST['description'],$_POST['brand'],$_POST['price'],$_POST['product']);       
         header("Location: /tp/admins");
         die();
             
+    }
+
+    public function editProduct($id_product,$component,$description,$price,$id_brand){
+        $this->productModel->edit($id_product,$component,$description,$price,$id_brand);
+        header("Location: /tp/admins");
+        die();
     }
     
 

@@ -16,16 +16,7 @@ class ProductModel
         $stmt = $this->db->prepare("SELECT p.id_product,p.component,p.description,p.price,b.name,b.id_brand FROM Product p
         INNER JOIN Brand b ON b.id_brand=p.id_brand ORDER BY p.component");
         $stmt->execute();
-        $products = $stmt->fetchAll(PDO::FETCH_OBJ);
-        return $products;
-    }
-
-    public function getAllBrands()
-    {
-
-        $stmt = $this->db->prepare("SELECT name,id_brand FROM Brand ORDER BY name ASC");
-        $stmt->execute();
-        $products = $stmt->fetchAll(PDO::FETCH_OBJ);
+        $products = $stmt->fetchAll(PDO::FETCH_OBJ);      
         return $products;
     }
 
@@ -39,9 +30,15 @@ class ProductModel
 
     public function add($description,$id_brand,$price,$component)
     {
-        echo $id_brand;
+        
         $stmt = $this->db->prepare("INSERT INTO Product (component,description,price,id_brand) VALUES (?,?,?,?)");
         $stmt->execute(array($component,$description,$price,$id_brand));       
     
+    }
+
+    public function edit($id_product,$component,$description,$price,$id_brand){
+        $stmt = $this->db->prepare("UPDATE Product SET component=?, description=?, price=?, id_brand=? WHERE id_product=?");
+        $stmt->execute(array($component,$description,$price,$id_brand,$id_product));
+
     }
 }

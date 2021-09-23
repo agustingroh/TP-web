@@ -31,10 +31,13 @@ switch ($params[0]) {
     case 'admin':
         $controller->deleteProduct($params[1]);
         break;
-    case 'newProduct':        
+    case 'newProduct':
         $controller->newProduct();
         break;
-      
+    case 'editProduct':
+         $controller->editProduct($params[1],$params[2],$params[3],$params[4],$params[5]);
+        break;
+
     default:
         $controller->getAllProducts();
         break;

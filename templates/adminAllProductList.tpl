@@ -3,7 +3,7 @@
 
 <div class="main-container">
     <div class="admin-table">
-        <table class="table table-striped table-dark">
+        <table id = "product-table" class="table table-striped table-dark">
             <thead>
                 <tr>       
                     <th scope="col">Componente</th>
@@ -16,11 +16,15 @@
             <tbody>
                 {foreach from=$products item=$product}
                 <tr>     
-                    <td>{$product->component}</td>
-                    <td>{$product->name}</td>
-                    <td>{$product->description}</td>
-                    <td> $ {$product->price}</td>
-                    <td><button type="button" class="delete" data-delete={$product->id_product}  >Borrar</button> <button type="button" class="update" data-update={$product->id_product}>Editar</button></td>
+                    <td >{$product->component}</td>
+                    <td >{$product->name}</td>
+                    <td >{$product->description}</td>
+                    <td > $ {$product->price}</td>
+                    <td>
+                        <button type="button" class="delete" data-delete={$product->id_product} >Borrar</button> <button type="button" class="update" data-price={$product->price} 
+                        data-description={($product->description != null ) ? $product->description : 'n/a' } 
+                         data-idbrand={$product->id_brand} data-component={$product->component} data-update={$product->id_product}>Editar</button>
+                    </td>
                 </tr>   
                 {/foreach}    
             </tbody>
@@ -35,30 +39,35 @@
           
                 <div class="col-md-10 mb-3">
                     <label for="product">Producto</label>
-                    <input type="text" name="product" class="form-control" id="validationTooltip01" placeholder="Ej.mouse" value="" required>      
+                    <input type="text" id="product" name="product" class="form-control" id="validationTooltip01" placeholder="Ej.mouse" value="" required>      
                 </div>
                 <div class="col-md-10 mb-3">
                     <label for="price">Precio</label>
-                    <input type="text" name="price" class="form-control" id="validationTooltip02" placeholder="precio" value="" required>   
+                    <input type="text" id="price" name="price" class="form-control" id="validationTooltip02" placeholder="precio" value="" required>   
                 </div>
                 <div class="col-md-10 mb-3">
                     <label for="description">Descripcion</label>
                     <div class="input-group">       
-                        <textarea type="text" name="description" class="form-control" id="validationTooltipUsername" placeholder="" aria-describedby="validationTooltipUsernamePrepend" required> </textarea> 
+                        <textarea type="text" id="description" name="description" class="form-control" id="validationTooltipUsername" value="" placeholder="" aria-describedby="validationTooltipUsernamePrepend" required> </textarea> 
                     </div>
                 </div> 
                 <div class="brand-container">
                     <label for="brand">Marca </label>
-                    <select name ="brand">       
+                    <select id="brand" name ="brand">       
                     {foreach from=$brands item=$brand}
-                        <option value={$brand->id_brand}>{$brand->name}</option>        
+                        <option  value={$brand->id_brand}>{$brand->name}</option>        
                     {/foreach}        
                     </select>
     
                 </div>
-
-            <button class="btn btn-primary" type="submit">cargar producto</button>
-        
+            <div class="form-btn-container">
+            <div class="btn-on">
+            <button  class="btn btn-primary" type="submit">cargar producto</button>
+            </div>
+            <div  class="btn-off">
+            <button id="edit-btn" type="button" >Editar producto</button>
+            </div>
+            </div>
         </form>
     </div>
 </div>

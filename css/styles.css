@@ -1,10 +1,4 @@
-*{
-   color: white; 
-}
 
-select,button{
-    color: black;
-}
 
 body{
     background-color: grey;
@@ -63,5 +57,13 @@ footer{
     background-color: black;
     border-top: rgba(255, 255, 255, 0.829) 1.3px solid;
     margin-top: 1%;
+    width: 100%;
+}
+
+.form-btn-container{
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    background-color: chartreuse;
     width: 100%;
 }
