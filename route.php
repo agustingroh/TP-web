@@ -2,8 +2,7 @@
 define('BASE_URL', '//' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']) . '/');
 
 require_once 'controller/ProductController.php';
-// Crear una aplicación MVC para listar los nombres de productos de una casa de limpieza. 
-//Al seleccionar uno se debe navegar a otra página donde se vea la descripción y precio.
+
 
 $controller = new ProductController();
 

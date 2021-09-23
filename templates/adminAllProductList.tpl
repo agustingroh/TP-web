@@ -20,7 +20,7 @@
                     <td>{$product->name}</td>
                     <td>{$product->description}</td>
                     <td> $ {$product->price}</td>
-                    <td><button type="button" class="delete" data-delete={$product->productId}  >Borrar</button> <button type="button" class="update" data-update={$product->productId}>Editar</button></td>
+                    <td><button type="button" class="delete" data-delete={$product->id_product}  >Borrar</button> <button type="button" class="update" data-update={$product->id_product}>Editar</button></td>
                 </tr>   
                 {/foreach}    
             </tbody>
@@ -51,7 +51,7 @@
                     <label for="brand">Marca </label>
                     <select name ="brand">       
                     {foreach from=$brands item=$brand}
-                        <option value={$brand->brandId}>{$brand->name}</option>        
+                        <option value={$brand->id_brand}>{$brand->name}</option>        
                     {/foreach}        
                     </select>
     

@@ -13,8 +13,8 @@ class ProductModel
     public function getAll()
     {
 
-        $stmt = $this->db->prepare("SELECT p.productId,p.component,p.description,p.price,b.name,b.brandId FROM Product p
-        INNER JOIN Brand b ON b.brandId=p.brandId ORDER BY p.component");
+        $stmt = $this->db->prepare("SELECT p.id_product,p.component,p.description,p.price,b.name,b.id_brand FROM Product p
+        INNER JOIN Brand b ON b.id_brand=p.id_brand ORDER BY p.component");
         $stmt->execute();
         $products = $stmt->fetchAll(PDO::FETCH_OBJ);
         return $products;
@@ -23,7 +23,7 @@ class ProductModel
     public function getAllBrands()
     {
 
-        $stmt = $this->db->prepare("SELECT name,brandId FROM Brand ORDER BY name ASC");
+        $stmt = $this->db->prepare("SELECT name,id_brand FROM Brand ORDER BY name ASC");
         $stmt->execute();
         $products = $stmt->fetchAll(PDO::FETCH_OBJ);
         return $products;
@@ -32,15 +32,16 @@ class ProductModel
 
     public function remove($id)
     {
-        $stmt = $this->db->prepare("DELETE FROM Product WHERE productId=?");
+        $stmt = $this->db->prepare("DELETE FROM Product WHERE id_product=?");
         $stmt->execute(array($id));       
     
     }
 
-    public function add($description,$brandId,$price,$component)
+    public function add($description,$id_brand,$price,$component)
     {
-        $stmt = $this->db->prepare("INSERT INTO Product (component,description,price,brandId) VALUES (?,?,?,?)");
-        $stmt->execute(array($component,$description,$price,$brandId));       
+        echo $id_brand;
+        $stmt = $this->db->prepare("INSERT INTO Product (component,description,price,id_brand) VALUES (?,?,?,?)");
+        $stmt->execute(array($component,$description,$price,$id_brand));       
     
     }
 }

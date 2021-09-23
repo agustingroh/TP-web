@@ -21,6 +21,7 @@ class ProductController{
         
     public function adminView(){
         $products =  $this->productModel->getAll();
+        // Llamo al modelo de marca
         $brands = $this->productModel->getAllBrands();
         $this->adminView->showAdminView($products,$brands);       
      }
@@ -36,7 +37,7 @@ class ProductController{
         if(!isset($_POST['description']) && !isset($_POST['brand']) && !isset($_POST['price']) && !isset($_POST['product'])){
             echo "bad request";
         }
-
+        var_dump($_POST);
         $this->productModel->add($_POST['description'],$_POST['brand'],$_POST['price'],$_POST['product']);       
         header("Location: /tp/admins");
         die();
