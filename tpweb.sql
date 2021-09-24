@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Sep 23, 2021 at 08:16 PM
+-- Generation Time: Sep 25, 2021 at 01:27 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -29,18 +29,15 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `Brand` (
   `id_brand` int(11) NOT NULL,
-  `name` varchar(30) NOT NULL
+  `brand_name` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `Brand`
 --
 
-INSERT INTO `Brand` (`id_brand`, `name`) VALUES
-(1, 'genius'),
-(2, 'hp'),
-(3, 'logitech'),
-(4, 'lenovo');
+INSERT INTO `Brand` (`id_brand`, `brand_name`) VALUES
+(11, 'hp');
 
 -- --------------------------------------------------------
 
@@ -61,9 +58,7 @@ CREATE TABLE `Product` (
 --
 
 INSERT INTO `Product` (`id_product`, `component`, `description`, `price`, `id_brand`) VALUES
-(3, 'mouse', 'n/a', 600, 2),
-(10, 'mouse', ' ', 600, 4),
-(11, 'teclado', ' ', 6000, 2);
+(40, 'mouse', 'asasasadasfdsf', 200, 11);
 
 --
 -- Indexes for dumped tables
@@ -73,7 +68,8 @@ INSERT INTO `Product` (`id_product`, `component`, `description`, `price`, `id_br
 -- Indexes for table `Brand`
 --
 ALTER TABLE `Brand`
-  ADD PRIMARY KEY (`id_brand`);
+  ADD PRIMARY KEY (`id_brand`),
+  ADD UNIQUE KEY `brand_name` (`brand_name`);
 
 --
 -- Indexes for table `Product`
@@ -87,10 +83,16 @@ ALTER TABLE `Product`
 --
 
 --
+-- AUTO_INCREMENT for table `Brand`
+--
+ALTER TABLE `Brand`
+  MODIFY `id_brand` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
 -- AUTO_INCREMENT for table `Product`
 --
 ALTER TABLE `Product`
-  MODIFY `id_product` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_product` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- Constraints for dumped tables

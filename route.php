@@ -2,9 +2,11 @@
 define('BASE_URL', '//' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']) . '/');
 
 require_once 'controller/ProductController.php';
+require_once 'controller/BrandController.php';
 
 
-$controller = new ProductController();
+$productController = new ProductController();
+$brandController = new BrandController();
 
 
 
@@ -23,28 +25,31 @@ switch ($params[0]) {
         break;
     case 'home':
         // home();
-        $controller->getAllProducts();
+        $productController->getAllProducts();
         break;
     case 'admins':
-        $controller->adminView();
+        $productController->adminView();
         break;
     case 'deleteProduct':
-        $controller->deleteProduct($params[1]);
+        $productController->deleteProduct($params[1]);
         break;
     case 'newProduct':
-        $controller->newProduct();
+        $productController->newProduct();
         break;
     case 'editProduct':
-         $controller->editProduct($params[1],$params[2],$params[3],$params[4],$params[5]);
+        $productController->editProduct($params[1], $params[2], $params[3], $params[4], $params[5]);
         break;
     case 'newBrand':
-        $controller->newBrand();
+        $brandController->new();
         break;
     case 'deleteBrand':
-        $controller->deleteBrand($params[1]);
+        $brandController->delete($params[1]);
+        break;
+    case 'editBrand':
+        $brandController->edit($params[1],$params[2]);
         break;
 
     default:
-        $controller->getAllProducts();
+        $productController->getAllProducts();
         break;
 }
