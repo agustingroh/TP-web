@@ -17,11 +17,12 @@
                 {foreach from=$products item=$product}
                 <tr>     
                     <td >{$product->component}</td>
-                    <td >{$product->name}</td>
+                    <td >{$product->brand_name}</td>
                     <td >{$product->description}</td>
                     <td > $ {$product->price}</td>
                     <td>
-                        <button type="button" class="delete" data-delete={$product->id_product} >Borrar</button> <button type="button" class="update" data-price={$product->price} 
+                        <button type="button" class="delete-product" data-delete={$product->id_product} >Borrar</button> 
+                        <button type="button" class="edit-product" data-price={$product->price} 
                         data-description="{$product->description }"
                          data-idbrand={$product->id_brand} data-component="{$product->component}" data-update={$product->id_product}>Editar</button>
                     </td>
@@ -32,7 +33,7 @@
     </div>    
 
     <div class="new-form-container">        
-        <form class="new-row-form"  action="newProduct" method="POST"  class="needs-validation" >
+        <form class="new-row-form product-form"  action="newProduct" method="POST"  class="needs-validation" >
         <div>
             <h3 class="form-title">Carga de producto</h3>
         </div>
@@ -55,7 +56,7 @@
                     <label for="brand">Marca </label>
                     <select id="brand" name ="brand">       
                     {foreach from=$brands item=$brand}
-                        <option  value={$brand->id_brand}>{$brand->name}</option>        
+                        <option  value={$brand->id_brand}>{$brand->brand_name}</option>        
                     {/foreach}        
                     </select>
     
@@ -65,11 +66,10 @@
             <button  class="btn btn-primary" type="submit">cargar producto</button>
             </div>
             <div  class="btn-off">
-            <button id="edit-btn" type="button" >Editar producto</button>
+            <button id="edit-btn-product" type="button" >Editar producto</button>
             </div>
             </div>
-        </form>
-        {include file='templates/errorFormularioIncompleto.tpl'}
+        </form>       
     </div>
 
 
@@ -83,10 +83,10 @@
             <tbody>
                 {foreach from=$brands item=$brand}
                 <tr>     
-                    <td >{$brand->name}</td> 
+                    <td >{$brand->brand_name}</td> 
                     <td>
-                        <button type="button" class="deleteBrand" data-delete={$brand->id_brand} >Borrar</button> 
-                        <button type="button" class="updateBrand" data-name={$brand->name} data-update={$brand->id_brand}>Editar</button>
+                        <button type="button" class="delete-brand" data-delete={$brand->id_brand}>Borrar</button> 
+                        <button type="button" class="get-brand-data" data-name={$brand->brand_name} data-update={$brand->id_brand}>Editar</button>
                     </td>
                 </tr>   
                 {/foreach}    
@@ -95,14 +95,14 @@
     </div> 
 
         <div class="new-form-container">        
-        <form class="new-row-form"  action="newBrand" method="POST"  class="needs-validation" >
+        <form class="new-row-form brand-form"  action="newBrand" method="POST"  class="needs-validation" >
         <div>
             <h3 class="form-title">Carga de marca</h3>
         </div>
           
                 <div class="col-md-10 mb-3">
-                    <label for="marca">Marca</label>
-                    <input type="text" id="marca" name="marca" class="form-control" id="validationTooltip01" placeholder="Ej.Lenovo" value="" required>      
+                    <label for="brand">Marca</label>
+                    <input type="text" id="brand-name" name="brand" class="form-control" id="validationTooltip01" placeholder="Ej.Lenovo" value="" required>      
                 </div>
                
             <div class="form-btn-container">
@@ -110,7 +110,7 @@
             <button  class="btn btn-primary" type="submit">cargar marca</button>
             </div>
             <div  class="btn-off">
-            <button id="edit-btn" type="button" >Editar marca</button>
+            <button id="edit-brand" type="button" >Editar marca</button>
             </div>
             </div>
         </form>

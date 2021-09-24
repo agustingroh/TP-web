@@ -1,71 +1,85 @@
 document.addEventListener("DOMContentLoaded", function (e) {
-"use_strict";
+  "use_strict";
 
 
 
-document.querySelectorAll(".delete").forEach(btn => {
+  document.querySelectorAll(".delete-product").forEach(btn => {
     btn.addEventListener("click", () => {
       deleteProduct(btn.dataset.delete);
     });
   });
 
- function deleteProduct(id){
+  function deleteProduct(id) {
     let url = `/tp/deleteProduct/${id}`;
     window.location.href = url;
-}
+  }
 
-document.querySelectorAll(".update").forEach(btn => {
-  btn.addEventListener("click", () => {
-    updateProduct(btn.dataset.update, btn.dataset.description, btn.dataset.component,btn.dataset.price,btn.dataset.idbrand); //btn.dataset.description solo guarda la primer palabra
+  document.querySelectorAll(".edit-product").forEach(btn => {
+    btn.addEventListener("click", () => {
+      getProductData(btn.dataset.update, btn.dataset.description, btn.dataset.component, btn.dataset.price, btn.dataset.idbrand); //btn.dataset.description solo guarda la primer palabra
+    });
   });
-});
 
 
-function updateProduct(id,description,component,price,idBrand){
-console.log(idBrand);
- document.querySelector("#product").value=component;
- document.querySelector("#price").value=price;
- document.querySelector("#brand").value=idBrand;
- document.querySelector("#description").value=description;
+  function getProductData(id, description, component, price, idBrand) {
+    document.querySelector("#product").value = component;
+    document.querySelector("#price").value = price;
+    document.querySelector("#brand").value = idBrand;
+    document.querySelector("#description").value = description;
 
- document.querySelector("#edit-btn").addEventListener("click",()=>{
-   edit(id);
+    document.querySelector("#edit-btn-product").addEventListener("click", () => {
+      editProduct(id);
+    });
+  }
+  // document.getElementById('btn-on').classList.('newclass');
+
+
+  function editProduct(id) {
+    let form = document.querySelector(".product-form");
+    let data = new FormData(form);
+    let url = `/tp/editProduct/${id}/${data.get('product')}/${data.get('description')}/${data.get('price')}/${data.get('brand')}`;
+    window.location.href = url;
+
+  }
+
+
+  // Brands
+
+  // Delete
+  document.querySelectorAll(".delete-brand").forEach(btn => {
+    btn.addEventListener("click", () => {
+      deleteBrand(btn.dataset.delete);
+    });
   });
-}
- // document.getElementById('btn-on').classList.('newclass');
+
+  function deleteBrand(id) {
+    let url = `/tp/deleteBrand/${id}`;
+    window.location.href = url;
+  }
 
 
-
-
-function edit(id){
-  
- let form =  document.querySelector(".newProduct-form");
-let data = new FormData(form);
-
-let url = `/tp/editProduct/${id}/${data.get('product')}/${data.get('description')}/${data.get('price')}/${data.get('brand')}`;
-window.location.href = url;
-
-}
-
-// brand
-
-
-document.querySelectorAll(".deleteBrand").forEach(btn => {
-  btn.addEventListener("click", () => {
-    deleteBrand(btn.dataset.delete);
+  document.querySelectorAll(".get-brand-data").forEach(btn => {
+    btn.addEventListener("click", () => {
+      getBrandData(btn.dataset.update, btn.dataset.name);
+    });
   });
-});
 
-function deleteBrand(id){
-  let url = `/tp/deleteBrand/${id}`;
+  function getBrandData(id, name) {
+    document.querySelector("#brand-name").value = name;
+
+    document.querySelector("#edit-brand").addEventListener("click", () => {
+      editBrand(id);
+    });
+
+  }
+
+function editBrand(id){
+  let form = document.querySelector(".brand-form");
+  let data = new FormData(form);
+  console.log(data.get('brand'));
+  let url = `/tp/editBrand/${id}/${data.get('brand')}`;
   window.location.href = url;
 }
-
-
-
-
-
-
 
 
 

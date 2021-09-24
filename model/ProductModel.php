@@ -13,10 +13,10 @@ class ProductModel
     public function getAll()
     {
 
-        $stmt = $this->db->prepare("SELECT p.id_product,p.component,p.description,p.price,b.name,b.id_brand FROM Product p
+        $stmt = $this->db->prepare("SELECT p.id_product,p.component,p.description,p.price,b.brand_name,b.id_brand FROM Product p
         INNER JOIN Brand b ON b.id_brand=p.id_brand ORDER BY p.component");
         $stmt->execute();
-        $products = $stmt->fetchAll(PDO::FETCH_OBJ);      
+        $products = $stmt->fetchAll(PDO::FETCH_OBJ);          
         return $products;
     }
 
