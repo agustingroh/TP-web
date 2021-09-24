@@ -35,12 +35,17 @@ class ProductController{
              
      }
 
-     public function newProduct(){     
-        if(!isset($_POST['description']) && !isset($_POST['brand']) && !isset($_POST['price']) && !isset($_POST['product'])){
-            echo "bad request";
-        }       
+     public function newProduct(){    
+          
+        if(isset($_POST['description']/* esta vacio pero no es null */['brand']['price']['product']) || empty($_POST['description'])){ //no funciona
+            echo "bad request, completa todos los campos"; //debe estar en un template crear view error.
+        var_dump($_POST);
+        }
+        else{    
         $this->productModel->add($_POST['description'],$_POST['brand'],$_POST['price'],$_POST['product']);       
-        header("Location: /tp/admins");
+       header("Location: /tp/admins");
+       var_dump($_POST);
+        }
         die();
             
     }
@@ -50,7 +55,32 @@ class ProductController{
         header("Location: /tp/admins");
         die();
     }
-    
+
+    // brand
+
+
+
+    public function deleteBrand($id){        
+        $this->brandModel->deleteBrand($id);        
+        header("Location: /tp/admins");
+        die();
+            
+    }
+
+    public function newBrand(){    
+          
+        if(isset($_POST['marca']) || empty($_POST['marca'])){ //no funciona
+            echo "bad request, completa todos los campos"; //debe estar en un template crear view error.
+            var_dump($_POST);
+        }
+        else{    
+        $this->brandModel->add($_POST['marca']);       //marca name o brand??   PROBLEMA EN SQL PIDE EL ID COMO DATO
+       header("Location: /tp/admins");
+       
+        }
+        die();
+            
+    }
 
 
 }

@@ -19,4 +19,16 @@ class BrandModel
         return $products;
     }
 
+    public function deleteBrand ($id){
+        $stmt = $this->db->prepare("DELETE FROM Brand WHERE id_brand=?");
+        $stmt->execute(array($id));       
+    }
+
+    public function add($name)
+    {
+        
+        $stmt = $this->db->prepare("INSERT INTO Brand name VALUES (?)");
+        $stmt->execute(array($name));       
+    
+    }
 }

@@ -10,13 +10,13 @@ document.querySelectorAll(".delete").forEach(btn => {
   });
 
  function deleteProduct(id){
-    let url = `/tp/admin/${id}`;
+    let url = `/tp/deleteProduct/${id}`;
     window.location.href = url;
 }
 
 document.querySelectorAll(".update").forEach(btn => {
   btn.addEventListener("click", () => {
-    updateProduct(btn.dataset.update, btn.dataset.description, btn.dataset.component,btn.dataset.price,btn.dataset.idbrand);
+    updateProduct(btn.dataset.update, btn.dataset.description, btn.dataset.component,btn.dataset.price,btn.dataset.idbrand); //btn.dataset.description solo guarda la primer palabra
   });
 });
 
@@ -46,5 +46,30 @@ let url = `/tp/editProduct/${id}/${data.get('product')}/${data.get('description'
 window.location.href = url;
 
 }
+
+// brand
+
+
+document.querySelectorAll(".deleteBrand").forEach(btn => {
+  btn.addEventListener("click", () => {
+    deleteBrand(btn.dataset.delete);
+  });
+});
+
+function deleteBrand(id){
+  let url = `/tp/deleteBrand/${id}`;
+  window.location.href = url;
+}
+
+
+
+
+
+
+
+
+
+
+
 
 });

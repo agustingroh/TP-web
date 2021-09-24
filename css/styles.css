@@ -20,7 +20,7 @@ body{
     padding-right: 10px;      
 }
 
-.new-product-form-container{   
+.new-form-container{   
     width: 100%;
     display: flex;
     flex-flow: row;
@@ -30,7 +30,7 @@ body{
   
 }
 
-.newProduct-form{
+.new-row-form{
     width: 30%;
     border: solid black 1Px;
     box-shadow: 10px 5px 5px black;
