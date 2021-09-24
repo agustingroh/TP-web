@@ -28,7 +28,7 @@ switch ($params[0]) {
     case 'admins':
         $controller->adminView();
         break;
-    case 'admin':
+    case 'deleteProduct':
         $controller->deleteProduct($params[1]);
         break;
     case 'newProduct':
@@ -36,6 +36,12 @@ switch ($params[0]) {
         break;
     case 'editProduct':
          $controller->editProduct($params[1],$params[2],$params[3],$params[4],$params[5]);
+        break;
+    case 'newBrand':
+        $controller->newBrand();
+        break;
+    case 'deleteBrand':
+        $controller->deleteBrand($params[1]);
         break;
 
     default:

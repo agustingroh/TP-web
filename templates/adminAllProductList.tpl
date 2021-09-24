@@ -22,8 +22,8 @@
                     <td > $ {$product->price}</td>
                     <td>
                         <button type="button" class="delete" data-delete={$product->id_product} >Borrar</button> <button type="button" class="update" data-price={$product->price} 
-                        data-description={($product->description != null ) ? $product->description : 'n/a' } 
-                         data-idbrand={$product->id_brand} data-component={$product->component} data-update={$product->id_product}>Editar</button>
+                        data-description="{$product->description }"
+                         data-idbrand={$product->id_brand} data-component="{$product->component}" data-update={$product->id_product}>Editar</button>
                     </td>
                 </tr>   
                 {/foreach}    
@@ -31,8 +31,8 @@
         </table>
     </div>    
 
-    <div class="new-product-form-container">        
-        <form class="newProduct-form"  action="newProduct" method="POST"  class="needs-validation" >
+    <div class="new-form-container">        
+        <form class="new-row-form"  action="newProduct" method="POST"  class="needs-validation" >
         <div>
             <h3 class="form-title">Carga de producto</h3>
         </div>
@@ -48,7 +48,7 @@
                 <div class="col-md-10 mb-3">
                     <label for="description">Descripcion</label>
                     <div class="input-group">       
-                        <textarea type="text" id="description" name="description" class="form-control" id="validationTooltipUsername" value="" placeholder="" aria-describedby="validationTooltipUsernamePrepend" required> </textarea> 
+                        <textarea type="text" id="description" name="description" class="form-control" id="validationTooltipUsername"  placeholder="" aria-describedby="validationTooltipUsernamePrepend" required></textarea> 
                     </div>
                 </div> 
                 <div class="brand-container">
@@ -69,7 +69,51 @@
             </div>
             </div>
         </form>
+        {include file='templates/errorFormularioIncompleto.tpl'}
     </div>
+
+
+         <div class="admin-table">
+        <table id = "brand-table" class="table table-striped table-dark">
+            <thead>
+                <tr>       
+                    <th scope="col">Marca</th>
+                </tr>
+            </thead>
+            <tbody>
+                {foreach from=$brands item=$brand}
+                <tr>     
+                    <td >{$brand->name}</td> 
+                    <td>
+                        <button type="button" class="deleteBrand" data-delete={$brand->id_brand} >Borrar</button> 
+                        <button type="button" class="updateBrand" data-name={$brand->name} data-update={$brand->id_brand}>Editar</button>
+                    </td>
+                </tr>   
+                {/foreach}    
+            </tbody>
+        </table>
+    </div> 
+
+        <div class="new-form-container">        
+        <form class="new-row-form"  action="newBrand" method="POST"  class="needs-validation" >
+        <div>
+            <h3 class="form-title">Carga de marca</h3>
+        </div>
+          
+                <div class="col-md-10 mb-3">
+                    <label for="marca">Marca</label>
+                    <input type="text" id="marca" name="marca" class="form-control" id="validationTooltip01" placeholder="Ej.Lenovo" value="" required>      
+                </div>
+               
+            <div class="form-btn-container">
+            <div class="btn-on">
+            <button  class="btn btn-primary" type="submit">cargar marca</button>
+            </div>
+            <div  class="btn-off">
+            <button id="edit-btn" type="button" >Editar marca</button>
+            </div>
+            </div>
+        </form>
 </div>
 
 
