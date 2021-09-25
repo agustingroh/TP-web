@@ -22,25 +22,24 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
 
   function getProductData(id, description, component, price, idBrand) {
+    document.querySelector("#edit-product-form").classList.remove('hide');
+    document.querySelector("#new-product-form").classList.add('hide');
     document.querySelector("#product").value = component;
     document.querySelector("#price").value = price;
     document.querySelector("#brand").value = idBrand;
-    document.querySelector("#description").value = description;
-
-    document.querySelector("#edit-btn-product").addEventListener("click", () => {
-      editProduct(id);
-    });
+    document.querySelector("#description").value = description;  
+    document.querySelector("#idit-product-button").value=id;
+  
   }
-  // document.getElementById('btn-on').classList.('newclass');
 
 
-  function editProduct(id) {
-    let form = document.querySelector(".product-form");
-    let data = new FormData(form);
-    let url = `/tp/editProduct/${id}/${data.get('product')}/${data.get('description')}/${data.get('price')}/${data.get('brand')}`;
-    window.location.href = url;
+document.querySelector("#cancel-product-edit").addEventListener("click",cancelProductEdit);
 
-  }
+
+function cancelProductEdit(){
+  document.querySelector("#edit-product-form").classList.add('hide');
+  document.querySelector("#new-product-form").classList.remove('hide');
+}
 
 
   // Brands
@@ -80,7 +79,6 @@ function editBrand(id){
   let url = `/tp/editBrand/${id}/${data.get('brand')}`;
   window.location.href = url;
 }
-
 
 
 

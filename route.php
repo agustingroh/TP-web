@@ -37,7 +37,7 @@ switch ($params[0]) {
         $productController->newProduct();
         break;
     case 'editProduct':
-        $productController->editProduct($params[1], $params[2], $params[3], $params[4], $params[5]);
+        $productController->edit();
         break;
     case 'newBrand':
         $brandController->new();

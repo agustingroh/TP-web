@@ -27,10 +27,10 @@ class ProductController
     }
 
     public function adminView()
-    {
-        
+    {    
+      
         $products =  $this->productModel->getAll();        
-        $brands = $this->brandModel->getAllBrands();       
+        $brands = $this->brandModel->getAllBrands();
         $this->adminView->showAdminView($products, $brands);
     }
 
@@ -61,9 +61,9 @@ class ProductController
         die();
     }
 
-    public function editProduct($id_product, $component, $description, $price, $id_brand)
+    public function edit()
     {
-        $this->productModel->edit($id_product, $component, $description, $price, $id_brand);
+        $this->productModel->edit($_POST['id'], $_POST['product'], $_POST['description'], $_POST['brand'], $_POST['price']);
         header("Location: /tp/admins");
         die();
     }

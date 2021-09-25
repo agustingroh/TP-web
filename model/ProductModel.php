@@ -36,9 +36,9 @@ class ProductModel
     
     }
 
-    public function edit($id_product,$component,$description,$price,$id_brand){
+    public function edit($id_product,$product,$description,$id_brand,$price){
         $stmt = $this->db->prepare("UPDATE Product SET component=?, description=?, price=?, id_brand=? WHERE id_product=?");
-        $stmt->execute(array($component,$description,$price,$id_brand,$id_product));
+        $stmt->execute(array($product,$description,$price,$id_brand,$id_product));
 
     }
 }

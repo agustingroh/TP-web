@@ -46,6 +46,9 @@ td,tr{
 .brand-container{
     padding-left: 17px;
 }
+#brand-table{
+    margin-top: 15px;
+}
 
 .btn.btn-primary{
 margin-bottom: 5px;
@@ -63,7 +66,30 @@ footer{
 .form-btn-container{
     display: flex;
     flex-flow: row;
-    justify-content: space-between;
-    background-color: chartreuse;
+    justify-content: space-between;   
     width: 100%;
+}
+
+.main-error-container{
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    height: 400px;   
+    width:100% ;
+}
+
+.bi-exclamation-triangle-fill{
+    font-size: 8em;
+}
+
+.advertising-logo{    
+    width: 100%;
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+}
+
+.hide{
+    display: none;
 }
