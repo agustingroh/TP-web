@@ -11,13 +11,26 @@ body{
     
 }
 
-.admin-table{
+.admin-tables{
     width: 100%;
     display: flex;
-    flex-flow: row;
+    flex-flow: column;
     justify-content: center;
     padding-left: 10px;
-    padding-right: 10px;      
+    padding-right: 10px;    
+    margin-bottom: 15px;  
+}
+
+.product-table-container, .brand-table-container{
+    max-height: 200px;
+    overflow:scroll;
+}
+
+.forms-container{
+    display: flex;
+    justify-content:space-around;
+    width: 100%;
+
 }
 
 .new-form-container{   
@@ -34,7 +47,11 @@ body{
     width: 30%;
     border: solid black 1Px;
     box-shadow: 10px 5px 5px black;
-    background-color: #454d55
+    background-color: #0e1c2b
+}
+
+label,h3{
+   color: #0a84ff;
 }
 
 td,tr{
@@ -66,8 +83,9 @@ footer{
 .form-btn-container{
     display: flex;
     flex-flow: row;
-    justify-content: space-between;   
+    justify-content:flex-end;   
     width: 100%;
+    align-items: center;
 }
 
 .main-error-container{
@@ -87,9 +105,23 @@ footer{
     width: 100%;
     display: flex;
     flex-flow: row;
-    justify-content: center;
+    justify-content: center;    
 }
 
 .hide{
     display: none;
+}
+
+#cancel-brand-edit, #cancel-product-edit{
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.btn.btn-success, .btn.btn-light{
+    margin-bottom: 10px;
+    margin-right: 5px;
+}
+
+.brand-form{
+    height: 200px;
 }

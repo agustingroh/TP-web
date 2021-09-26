@@ -19,12 +19,12 @@ class BrandController
     {
         try {
             if ($id)
-                $this->brandModel->deleteBrand($id);
+            $this->brandModel->deleteBrand($id);
             header("Location: /tp/admins");
         } catch (Exception $e) {
+            $this->adminView->showMessage("La marca esta siendo utilizada por un producto",500);
         }
-
-        die();
+        
     }
 
     public function new()
@@ -32,14 +32,12 @@ class BrandController
         try{
         
             if (!isset($_POST['brand']) || empty($_POST['brand'])) {
-                echo "bad request, completa todos los campos";                
+                $this->adminView->showMessage("Bad request",400);              
             } else {
                 $this->brandModel->add($_POST['brand']);
                 header("Location: /tp/admins");
-            }
-            die();
-        }catch(Exception $e){  
-            
+            }           
+        }catch(Exception $e){         
             
             $this->adminView->showMessage("La marca ingresada ya existe",500);
         }
@@ -47,9 +45,19 @@ class BrandController
       
     }
 
-    public function edit($id, $brand)
-    {
-        $this->brandModel->edit($id, $brand);
-        header("Location: /tp/admins");
+    public function edit()
+    {  
+        try{
+            if(isset($_POST['id']) && isset($_POST['brand'])) {       
+            $this->brandModel->edit($_POST['id'],$_POST['brand']);
+            header("Location: /tp/admins");
+            }
+            else{
+                $this->adminView->showMessage("Bad request",400);
+            }
+     
+        }catch(Exception $e){
+            $this->adminView->showMessage("La marca que se desea utilizar esta siendo utilizada por un producto",500);
+        }
     }
 }

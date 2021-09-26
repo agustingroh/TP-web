@@ -64,23 +64,19 @@ function cancelProductEdit(){
   });
 
   function getBrandData(id, name) {
+    document.querySelector("#edit-brand-form").classList.remove('hide');
+    document.querySelector("#new-brand-form").classList.add('hide');
     document.querySelector("#brand-name").value = name;
-
-    document.querySelector("#edit-brand").addEventListener("click", () => {
-      editBrand(id);
-    });
-
+    document.querySelector("#edit-brand").value=id;
   }
 
-function editBrand(id){
-  let form = document.querySelector(".brand-form");
-  let data = new FormData(form);
-  console.log(data.get('brand'));
-  let url = `/tp/editBrand/${id}/${data.get('brand')}`;
-  window.location.href = url;
-}
 
-
+  // cancel edition of brand
+  document.querySelector("#cancel-brand-edit").addEventListener("click",cancelBrandEdit);
+  function cancelBrandEdit(){
+    document.querySelector("#edit-brand-form").classList.add('hide');
+    document.querySelector("#new-brand-form").classList.remove('hide');
+  }
 
 
 

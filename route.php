@@ -46,7 +46,7 @@ switch ($params[0]) {
         $brandController->delete($params[1]);
         break;
     case 'editBrand':
-        $brandController->edit($params[1],$params[2]);
+        $brandController->edit();
         break;
 
     default:
