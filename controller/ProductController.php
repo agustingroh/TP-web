@@ -53,7 +53,7 @@ class ProductController
     public function newProduct()
     {
         try {
-            if (!isset($_POST['description'],$_POST['brand'],$_POST['price'],$_POST['product']) || empty($_POST['description'])) { 
+            if (!isset($_POST['description']['brand']['price']['product']) || empty($_POST['description']['brand']['price']['product'])) { 
                 $this->adminView->showMessage("Completa todos los campos",400);
                 
             } else {

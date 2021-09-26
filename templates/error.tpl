@@ -20,7 +20,7 @@
      <h1>{$error}</h1>
   </div>
   <div>
-    <h3>{$message}</h3> 
+    <h2>{$message}</h2> 
   </div>
   <div>
     <button id="back-admin" type="button" class="btn btn-primary btn-lg">Volver</button>
