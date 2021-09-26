@@ -38,10 +38,13 @@ class ProductController
     {
         try{   
         if($id)    
-        $this->productModel->remove($id);
-        }catch(Exception $e){
-            var_dump($e);
-        }
+            $this->productModel->remove($id);
+        else 
+            $this->adminView->showMessage("Id invalido",400);
+        
+    } catch (Exception $e) {
+        $this->adminView->showMessage("No se pudo eliminar el producto",500);
+    }
 
         header("Location: /tp/admins");
         die();
@@ -49,23 +52,30 @@ class ProductController
 
     public function newProduct()
     {
-
-        if (isset($_POST['description']['brand']['price']['product']) || empty($_POST['description'])) { 
-            echo "bad request, completa todos los campos"; 
-            var_dump($_POST);
-        } else {
-            $this->productModel->add($_POST['description'], $_POST['brand'], $_POST['price'], $_POST['product']);
-            header("Location: /tp/admins");
-            var_dump($_POST);
+        try {
+            if (isset($_POST['description']['brand']['price']['product']) || empty($_POST['description'])) { 
+                $this->adminView->showMessage("Completa todos los campos",400);
+                
+            } else {
+                $this->productModel->add($_POST['description'], $_POST['brand'], $_POST['price'], $_POST['product']);
+                header("Location: /tp/admins");
+                
+            }
+        } catch (Exception $e) {
+            $this->adminView->showMessage("No se pudo crear el producto",500);
         }
         die();
     }
 
     public function edit()
-    {
-        $this->productModel->edit($_POST['id'], $_POST['product'], $_POST['description'], $_POST['brand'], $_POST['price']);
-        header("Location: /tp/admins");
-        die();
+    {  
+        try {
+            $this->productModel->edit($_POST['id'], $_POST['product'], $_POST['description'], $_POST['brand'], $_POST['price']);
+            header("Location: /tp/admins");
+            die();
+        } catch (Exception $e) {  
+            $this->adminView->showMessage("Bad request",400);
+        }
     }
 
   
