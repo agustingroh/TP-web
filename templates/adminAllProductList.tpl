@@ -69,7 +69,7 @@
                 </div>
                 <div class="col-md-10 mb-3">
                     <label for="price">Precio</label>
-                    <input type="text"  name="price" class="form-control" id="validationTooltip02" placeholder="precio" value="" required>   
+                    <input type="number"  name="price" class="form-control" id="validationTooltip02" placeholder="precio" value="" step="0.1" min="0" required>   
                 </div>
                 <div class="col-md-10 mb-3">
                     <label for="description">Descripcion</label>
@@ -103,7 +103,7 @@
                 </div>
                 <div class="col-md-10 mb-3">
                     <label for="price">Precio</label>
-                    <input type="text" id="price" name="price" class="form-control" id="validationTooltip02" placeholder="precio" value="" required>   
+                    <input type="number" id="price" name="price" class="form-control" id="validationTooltip02" placeholder="precio" value="" step="0.1" min="0" required>   
                 </div>
                 <div class="col-md-10 mb-3">
                     <label for="description">Descripcion</label>
