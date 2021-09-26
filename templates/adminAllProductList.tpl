@@ -61,7 +61,7 @@
      <!--new product Form-->
         <form id="new-product-form" class="new-row-form product-form"  action="newProduct" method="POST"  class="needs-validation" >
         <div>
-            <h3 class="form-title">Carga de producto</h3>
+            <h3 class="form-title">Cargar Producto</h3>
         </div>          
                 <div class="col-md-10 mb-3">
                     <label for="product">Producto</label>
