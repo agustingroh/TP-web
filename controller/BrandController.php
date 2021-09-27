@@ -31,7 +31,7 @@ class BrandController
     {
         try{
         
-            if (!isset($_POST['brand']) || empty($_POST['brand'])) {
+            if (!isset($_POST['brand']) || !isset($_POST['id'])|| empty($_POST['brand'])) {
                 $this->adminView->showMessage("Bad request",400);              
             } else {
                 $this->brandModel->add($_POST['brand']);
@@ -48,7 +48,7 @@ class BrandController
     public function edit()
     {  
         try{
-            if(isset($_POST['id']) && isset($_POST['brand'])) {       
+            if(isset($_POST['id']) && isset($_POST['brand'])&& !empty($_POST['brand'])) {       
             $this->brandModel->edit($_POST['id'],$_POST['brand']);
             header("Location: /tp/admins");
             }

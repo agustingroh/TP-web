@@ -48,6 +48,9 @@ switch ($params[0]) {
     case 'editBrand':
         $brandController->edit();
         break;
+    case 'showProduct':
+        $productController->getProduct($params[1]);
+        break;
 
     default:
         $productController->getAllProducts();
