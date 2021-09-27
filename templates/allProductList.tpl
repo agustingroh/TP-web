@@ -9,43 +9,20 @@
       <table class="table table-striped">
          <thead>
             <tr>
-               <th scope="col">*</th>
-               <th scope="col">First</th>
-               <th scope="col">Last</th>
-               <th scope="col">Handle</th>
+               <th scope="col">Producto</th>
+               <th scope="col">Precio</th>
             </tr>
          </thead>
          <tbody>
-            <tr>
-               <th scope="row">1</th>
-               <td>Mark</td>
-               <td>Otto</td>
-               <td>@mdo</td>
-            </tr>
-            <tr>
-               <th scope="row">2</th>
-               <td>Jacob</td>
-               <td>Thornton</td>
-               <td>@fat</td>
-            </tr>
-            <tr>
-               <th scope="row">3</th>
-               <td>Larry</td>
-               <td>the Bird</td>
-               <td>@twitter</td>
-            </tr>
+            {foreach from=$products item=$product}
+               <tr>
+                  <th scope="row"><a href="showProduct/{$product->id_product}"> {$product->component}</a></th>
+                  <td>{$product->price}</td>
+               </tr>
+            {/foreach}
          </tbody>
       </table>
    </div>
 </div>
-
-<ul>
-
-{foreach from=$products item=$product}
-   <li>{$product->component}, {$product->price} </li> 
-{/foreach}
-</ul>
-
-
 
 {include file='templates/footer.tpl'}

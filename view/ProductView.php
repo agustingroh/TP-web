@@ -15,4 +15,12 @@ class ProductView {
         $this->smarty->display('templates/allProductList.tpl');
 
     }
+
+    public function showProduct($product){ 
+             
+        $this->smarty->assign('product',$product);
+        $this->smarty->display('templates/productSpecifications.tpl');
+
+    }
+
 }

@@ -53,14 +53,19 @@ class ProductController
     public function newProduct()
     {
         try {
-            if (!isset($_POST['description']['brand']['price']['product']) || empty($_POST['description']['brand']['price']['product'])) { 
+            if (!isset($_POST['product'])||(!isset( $_POST['price']))||(!isset(  $_POST['description']))||(!isset(  $_POST['brand']) )|| empty($_POST['description']) || empty($_POST['price'])|| empty($_POST['product']) ) { 
+                /*$_POST['description']="a";
+                $_POST['price']=3;
+                $_POST['brand']=11;
+            echo (!isset($_POST['product'])||(!isset( $_POST['price']))||(!isset(  $_POST['description']))||(!isset(  $_POST['brand']) )|| empty($_POST['description']) || empty($_POST['price'])|| empty($_POST['product']) );
+*/
                 $this->adminView->showMessage("Completa todos los campos",400);
                 
             } else {
                 $this->productModel->add($_POST['description'], $_POST['brand'], $_POST['price'], $_POST['product']);
                 header("Location: /tp/admins");
                 
-            }
+           }
         } catch (Exception $e) {
             $this->adminView->showMessage("No se pudo crear el producto",500);
         }
@@ -70,12 +75,22 @@ class ProductController
     public function edit()
     {  
         try {
-            $this->productModel->edit($_POST['id'], $_POST['product'], $_POST['description'], $_POST['brand'], $_POST['price']);
-            header("Location: /tp/admins");
+            if (!isset($_POST['product'])||(!isset( $_POST['price']))||(!isset(  $_POST['description']))||(!isset(  $_POST['brand']) )|| empty($_POST['description']) || empty($_POST['price'])|| empty($_POST['product']) ) { 
+                $this->productModel->edit($_POST['id'], $_POST['product'], $_POST['description'], $_POST['brand'], $_POST['price']);
+                header("Location: /tp/admins");
             die();
-        } catch (Exception $e) {  
+            }     
+        } 
+        catch (Exception $e) {  
             $this->adminView->showMessage("Bad request",400);
         }
+    }
+
+    public function getProduct($id){
+        // validar datos
+        //try catch
+        $product =  $this->productModel->get($id);
+        $this->productView->showProduct($product);
     }
 
   
