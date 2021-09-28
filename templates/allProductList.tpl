@@ -3,7 +3,16 @@
 
 <div class="main-product-list-container">
    <div class="filters-container">
-      <h3>Filtros </h3>
+   <form action="home" method="post">
+        <label for="brand">Filtro de marcas </label>
+                    <select name ="brand">
+                        <option  value='allbrands'>Todas las marcas</option>         
+                        {foreach from=$brands item=$brand}                     
+                           <option  value={$brand->id_brand}>{$brand->brand_name}</option>        
+                        {/foreach}        
+                    </select> 
+   <input type="submit" name="submit" value="filtrar" >
+</form>              
    </div>
    <div>
       <table class="table table-striped">

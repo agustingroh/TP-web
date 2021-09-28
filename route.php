@@ -24,8 +24,8 @@ switch ($params[0]) {
 
         break;
     case 'home':
-        // home();
-        $productController->getAllProducts();
+        $productController->getFilteredProducts();
+
         break;
     case 'admins':
         $productController->adminView();
@@ -53,6 +53,6 @@ switch ($params[0]) {
         break;
 
     default:
-        $productController->getAllProducts();
+        $productController->getFilteredProducts();
         break;
 }
