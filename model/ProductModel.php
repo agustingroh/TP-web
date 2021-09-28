@@ -41,4 +41,14 @@ class ProductModel
         $stmt->execute(array($product,$description,$price,$id_brand,$id_product));
 
     }
+
+
+    public function get($id)
+    {
+        $stmt = $this->db->prepare("SELECT p.id_product,p.component,p.description,p.price,b.brand_name,b.id_brand FROM Product p
+        INNER JOIN Brand b ON b.id_brand=p.id_brand WHERE id_product=?");
+        $stmt->execute(array($id));
+        $product = $stmt->fetch(PDO::FETCH_OBJ);          
+        return $product;
+    }
 }

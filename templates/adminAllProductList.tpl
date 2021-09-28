@@ -74,7 +74,7 @@
                 <div class="col-md-10 mb-3">
                     <label for="description">Descripcion</label>
                     <div class="input-group">       
-                        <textarea type="text"  name="description" class="form-control" id="validationTooltipUsername"  placeholder="" aria-describedby="validationTooltipUsernamePrepend" required></textarea> 
+                        <textarea type="text"  name="description" class="form-control" id="validationTooltipUsername"  placeholder="" aria-describedby="validationTooltipUsernamePrepend" ></textarea> 
                     </div>
                 </div> 
                 <div class="brand-container">
