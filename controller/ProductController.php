@@ -74,11 +74,11 @@ class ProductController
     public function edit()
     {  
         try {
-            if (!isset($_POST['product'])||(!isset( $_POST['price']))||(!isset(  $_POST['description']))||(!isset(  $_POST['brand']) )|| empty($_POST['description']) || empty($_POST['price'])|| empty($_POST['product']) ) { 
+            if (isset($_POST['product']) && (isset( $_POST['price'])) && (isset(  $_POST['description'])) && (isset(  $_POST['brand']) )&& !empty($_POST['description']) && !empty($_POST['price'])&& !empty($_POST['product']) ) { 
                 $this->productModel->edit($_POST['id'], $_POST['product'], $_POST['description'], $_POST['brand'], $_POST['price']);
                 header("Location: /tp/admins");
             die();
-            }     
+            }   else $this->adminView->showMessage("Algo ha salido mal",400);
         } 
         catch (Exception $e) {  
             $this->adminView->showMessage("Bad request",400);
