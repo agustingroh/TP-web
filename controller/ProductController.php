@@ -22,8 +22,10 @@ class ProductController
 
     public function getAllProducts()
     {
+        var_dump($_POST);
         $products =  $this->productModel->getAll();
-        $this->productView->showAllProducts($products);
+        $brands = $this->brandModel->getAllBrands();
+        $this->productView->showAllProducts($products,$brands);
     }
 
     public function adminView()
