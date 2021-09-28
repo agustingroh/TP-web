@@ -56,12 +56,9 @@ class ProductController
     {
         try {
             if (!isset($_POST['product'])||(!isset( $_POST['price']))||(!isset(  $_POST['description']))||(!isset(  $_POST['brand']) )|| empty($_POST['description']) || empty($_POST['price'])|| empty($_POST['product']) ) { 
-                /*$_POST['description']="a";
-                $_POST['price']=3;
-                $_POST['brand']=11;
-            echo (!isset($_POST['product'])||(!isset( $_POST['price']))||(!isset(  $_POST['description']))||(!isset(  $_POST['brand']) )|| empty($_POST['description']) || empty($_POST['price'])|| empty($_POST['product']) );
-*/
-                $this->adminView->showMessage("Completa todos los campos",400);
+             
+
+               $this->adminView->showMessage("Completa todos los campos",400);
                 
             } else {
                 $this->productModel->add($_POST['description'], $_POST['brand'], $_POST['price'], $_POST['product']);
@@ -93,6 +90,22 @@ class ProductController
         //try catch
         $product =  $this->productModel->get($id);
         $this->productView->showProduct($product);
+    }
+
+
+
+    public function getFilteredProducts()
+    {
+    
+        $brands = $this->brandModel->getAllBrands();
+        if($_POST['brand']=='allbrands' || empty($_POST['brand']))
+            $products =  $this->productModel->getAll();       
+        else
+            $products = $this->productModel->getAllProductsByBrandId($_POST['brand']);
+           
+        
+      
+         $this->productView->showAllProducts($products,$brands);
     }
 
   
