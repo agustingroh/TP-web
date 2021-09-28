@@ -148,3 +148,26 @@ footer{
 h1{
     color: aliceblue;
 }
+.specificationsContainer{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 10vh 10vh 80vh;
+    grid-template-areas: "product product"
+                        "brand  description"
+                        "price  description";
+
+    margin: 30px;
+}
+.product { grid-area: product; }
+.brand { grid-area: brand; }
+.price { grid-area: price; }
+.description {grid-area: description;}
+
+h3.especificationView{
+    color: aquamarine;
+}
+
+p{
+    font-size: x-large;
+    color: burlywood;
+}
