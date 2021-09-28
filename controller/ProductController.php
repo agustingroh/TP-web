@@ -86,26 +86,35 @@ class ProductController
     }
 
     public function getProduct($id){
-        // validar datos
-        //try catch
-        $product =  $this->productModel->get($id);
-        $this->productView->showProduct($product);
+       
+        try {  
+            $product =  $this->productModel->get($id);
+            if (empty($product))
+                $this->adminView->showMessage("Ese producto no existe",400);
+            else
+                $this->productView->showProduct($product);
+        } 
+        catch (Exception $e) {  
+            $this->adminView->showMessage("Bad request",400);
+        }
     }
 
 
 
     public function getFilteredProducts()
     {
-    
-        $brands = $this->brandModel->getAllBrands();
-        if($_POST['brand']=='allbrands' || empty($_POST['brand']))
-            $products =  $this->productModel->getAll();       
-        else
-            $products = $this->productModel->getAllProductsByBrandId($_POST['brand']);
-           
-        
-      
-         $this->productView->showAllProducts($products,$brands);
+        try {
+            $brands = $this->brandModel->getAllBrands();
+            if($_POST['brand']=='allbrands' || empty($_POST['brand']))
+                $products =  $this->productModel->getAll();       
+            else
+                $products = $this->productModel->getAllProductsByBrandId($_POST['brand']);
+            
+            $this->productView->showAllProducts($products,$brands);
+        }
+        catch (Exception $e) {  
+            $this->adminView->showMessage("Bad request",400);
+        }
     }
 
   
