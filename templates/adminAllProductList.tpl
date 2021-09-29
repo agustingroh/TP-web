@@ -19,7 +19,7 @@
                     <tr>     
                         <td>{$product->component}</td>
                         <td>{$product->brand_name}</td>
-                        <td>{$product->description}</td>
+                        <td class="description-column">{$product->description}</td>
                         <td> $ {$product->price}</td>
                         <td>                     
                             <button type="button" class="delete-product btn btn-danger" data-delete={$product->id_product} ><i class="bi bi-trash"></i> Borrar</button> 

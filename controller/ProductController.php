@@ -55,14 +55,12 @@ class ProductController
     public function newProduct()
     {
         try {
-            if (!isset($_POST['product'])||(!isset( $_POST['price']))||(!isset(  $_POST['description']))||(!isset(  $_POST['brand']) )|| empty($_POST['description']) || empty($_POST['price'])|| empty($_POST['product']) ) { 
-             
-
-               $this->adminView->showMessage("Completa todos los campos",400);
+            if (isset($_POST['product']) && (isset( $_POST['price'])) && (isset(  $_POST['description'])) && (isset(  $_POST['brand']) )&& !empty($_POST['description']) && !empty($_POST['price'])&& !empty($_POST['product'])) { 
+                $this->productModel->add($_POST['description'], $_POST['brand'], $_POST['price'], $_POST['product']);
+                header("Location: /tp/admins");               
                 
             } else {
-                $this->productModel->add($_POST['description'], $_POST['brand'], $_POST['price'], $_POST['product']);
-                header("Location: /tp/admins");
+                $this->adminView->showMessage("Completa todos los campos",400);
                 
            }
         } catch (Exception $e) {

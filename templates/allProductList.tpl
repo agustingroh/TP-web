@@ -20,14 +20,14 @@
             <tr>
                <th scope="col">Producto</th>
                <th scope="col">Marca</th>
-               <th scope="col">Precio</th>
+               <th scope="col">Precio</th>               
             </tr>
          </thead>
          <tbody>
             {foreach from=$products item=$product}
                <tr>
-                  <th scope="row"><a href="showProduct/{$product->id_product}"> {$product->component}</a></th>
-                  <td>{$product->brand_name}</td>
+                  <th scope="row"><a href="showProduct/{$product->id_product}"  data-toggle="tooltip" data-placement="top" title="Ver detalles"> {$product->component}</a></th>
+                  <td >{$product->brand_name}</td>
                   <td>{$product->price}</td>
                </tr>
             {/foreach}
