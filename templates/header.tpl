@@ -21,9 +21,16 @@
             <li class="nav-item active">
               <a class="nav-link" href="home">Productos <span class="sr-only">(current)</span></a>
             </li>            
-              <li class="nav-item">
+              <li id="nav-admin" class="nav-item hide">
               <a class="nav-link" href="admins">Administrador</a>
             </li>             
           </ul>
         </div>
+        <div>
+         <form method="POST" action="signIn">         
+            <input name="email" placeholder="email" type="email" required>
+            <input name="password" placeholder="Contraseña" type="password" required>
+            <button id="sign-in" type="submit">Ingresar</button>
+        </form>       
+        </div>  
       </nav>
