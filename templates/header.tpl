@@ -27,7 +27,7 @@
           </ul>
         </div>
         <div>
-         <form method="POST" action="signIn">         
+         <form method="POST" action="logIn">         
             <input name="email" placeholder="email" type="email" required>
             <input name="password" placeholder="Contraseña" type="password" required>
             <button id="sign-in" type="submit">Ingresar</button>

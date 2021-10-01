@@ -5,21 +5,23 @@ class UserController
 {
 
     private $userModel;
+    private $errorView;
 
     function __construct()
     {
         $this->userModel= new UserModel();
+        $this->adminView = new AdminView();  
     }
 
 
-  public function logIn(){  
+  public function signIn(){  
        $password = password_hash($_POST['password'],PASSWORD_BCRYPT);
-       $this->userModel->logIn($_POST['email'],$password);
+       $this->userModel->signIn($_POST['email'],$password);
        header("Location: /tp/admins");
         
     }
 
-    public function signIn(){  
+    public function logIn(){  
       $userData =  $this->userModel->get($_POST['email']);
          if(password_verify($_POST['password'],$userData->password)){
             session_start();
@@ -29,7 +31,7 @@ class UserController
          }   
         
         header('Location: /tp/home');
-      
+    
          
      }
 

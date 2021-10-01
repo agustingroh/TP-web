@@ -52,11 +52,11 @@ switch ($params[0]) {
     case 'showProduct':
         $productController->getProduct($params[1]);
         break;
-    case 'signIn':
-        $userController->signIn();
+    case 'logIn':
+        $userController->logIn();
         break;
     case 'newAdmin':
-            $userController->logIn();
+            $userController->signIn();
             break;
     default:
   

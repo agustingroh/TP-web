@@ -13,7 +13,7 @@ function __construct()
 
 
    
-    function logIn($email,$password){
+    function signIn($email,$password){
         $stmt = $this->db->prepare("INSERT INTO User (email,password,role) VALUES (?,?,?)");
         $stmt->execute(array($email,$password,1));
       
