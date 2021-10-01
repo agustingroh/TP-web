@@ -12,10 +12,7 @@ class ProductView {
        
 
         $this->smarty->assign('products',$products);
-       $this->smarty->assign('brands',$brands);
-
-
-    
+       $this->smarty->assign('brands',$brands);   
 
         $this->smarty->display('templates/allProductList.tpl');
 
