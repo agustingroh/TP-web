@@ -12,6 +12,7 @@ class UserController
     {
         $this->userModel= new UserModel();
         $this->accountView= new AccountView();
+        $this->adminView = new AdminView();  
     }
 
 
@@ -23,7 +24,6 @@ class UserController
     }
 
     public function signIn(){  
-      
       $userData =  $this->userModel->get($_POST['email']);
          if(password_verify($_POST['password'],$userData->password)){
             session_start();
@@ -31,11 +31,12 @@ class UserController
             $_SESSION['role'] = $userData->role;
             $_SESSION['email'] = $userData->email;
             header("Location: /tp/admins");
-            
+            echo"valido";
             die();
          }   
-        $this->accountView->showMessage("email o contraseña incorrecto");
-      
+        echo"no valido";
+        header('Location: /tp/home');
+    
          
      }
 
