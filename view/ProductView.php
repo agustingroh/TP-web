@@ -8,10 +8,11 @@ class ProductView {
         $this->smarty= new Smarty();
     }
     
-    public function showAllProducts($products,$brands){      
+    public function showAllProducts($products,$brands){ 
+       
 
         $this->smarty->assign('products',$products);
-        $this->smarty->assign('brands',$brands);
+       $this->smarty->assign('brands',$brands);   
 
         $this->smarty->display('templates/allProductList.tpl');
 
