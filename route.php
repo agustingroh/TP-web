@@ -56,8 +56,11 @@ switch ($params[0]) {
         $userController->signIn();
         break;
     case 'newAdmin':
-            $userController->logIn();
-            break;
+        $userController->logIn();
+        break;
+    case 'logOut':
+        $userController->logOut();
+        break;
     default:
   
         $productController->getFilteredProducts();

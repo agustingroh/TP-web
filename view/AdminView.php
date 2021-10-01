@@ -9,7 +9,8 @@ class AdminView {
         $this->smarty= new Smarty();
     }
     
-    public function showAdminView($products,$brands,$test = ""){    
+    public function showAdminView($products,$brands,$test = ""){   
+       
         $this->smarty->assign("user",$test);  
         $this->smarty->assign('products',$products);
         $this->smarty->assign('brands',$brands);       

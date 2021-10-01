@@ -3,6 +3,7 @@ require_once 'model/ProductModel.php';
 require_once 'view/ProductView.php';
 require_once 'view/AdminView.php';
 require_once 'model/BrandModel.php';
+require_once 'view/AccountView.php';
 
 class ProductController
 {
@@ -11,6 +12,7 @@ class ProductController
     private $productView;
     private $adminView;
     private $brandModel;
+    private $accountView;
 
     function __construct()
     {
@@ -18,11 +20,12 @@ class ProductController
         $this->productView = new ProductView();
         $this->adminView = new AdminView();     
         $this->brandModel = new BrandModel();  
+        $this->accountView = new AccountView();
     }
 
     public function getAllProducts()
     {
-        var_dump($_POST);
+       
         $products =  $this->productModel->getAll();
         $brands = $this->brandModel->getAllBrands();
         $this->productView->showAllProducts($products,$brands);
@@ -30,10 +33,17 @@ class ProductController
 
     public function adminView()
     {    
+        session_start();
+       
+        if (!isset($_SESSION['email']) && $_SESSION['role']!=1){
+           $this->accountView->showLogin();
+        }
+        else{
       
-        $products =  $this->productModel->getAll();        
-        $brands = $this->brandModel->getAllBrands();
-        $this->adminView->showAdminView($products, $brands,"ingreso con exito");
+            $products =  $this->productModel->getAll();        
+            $brands = $this->brandModel->getAllBrands();
+            $this->adminView->showAdminView($products, $brands,"ingreso con exito");
+        }
     }
 
     public function deleteProduct($id)
@@ -108,7 +118,16 @@ class ProductController
             else
                 $products = $this->productModel->getAllProductsByBrandId($_POST['brand']);
             
-            $this->productView->showAllProducts($products,$brands);
+            session_start();
+            if($_SESSION['role'] == 1){
+
+                 $this->productView->showAllProducts($products,$brands, "show");
+            }
+            else{
+                $this->productView->showAllProducts($products,$brands, "hide");
+
+            }
+
         }
         catch (Exception $e) {  
             $this->adminView->showMessage("Bad request",400);
