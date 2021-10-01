@@ -33,7 +33,7 @@ class ProductController
       
         $products =  $this->productModel->getAll();        
         $brands = $this->brandModel->getAllBrands();
-        $this->adminView->showAdminView($products, $brands);
+        $this->adminView->showAdminView($products, $brands,"ingreso con exito");
     }
 
     public function deleteProduct($id)
@@ -100,7 +100,7 @@ class ProductController
 
 
     public function getFilteredProducts()
-    {
+    { 
         try {
             $brands = $this->brandModel->getAllBrands();
             if($_POST['brand']=='allbrands' || empty($_POST['brand']))

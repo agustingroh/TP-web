@@ -33,4 +33,7 @@
             <button id="sign-in" type="submit">Ingresar</button>
         </form>       
         </div>  
+        <div>
+        <h5>{$user}</h5>
+        </div>
       </nav>

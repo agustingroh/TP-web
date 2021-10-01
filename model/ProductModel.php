@@ -7,7 +7,7 @@ class ProductModel
 
     function __construct()
     {
-        $this->db = new PDO('mysql:host=localhost;' . 'dbname=tpweb;charset=utf8', 'root', '');
+        $this->db = new PDO('mysql:host=localhost;dbname=tpweb;charset=utf8', 'root', '');
     }
 
     public function getAll()

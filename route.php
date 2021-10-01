@@ -3,11 +3,12 @@ define('BASE_URL', '//' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'
 
 require_once 'controller/ProductController.php';
 require_once 'controller/BrandController.php';
-require_once 'controller/AccountController.php';
+require_once 'controller/UserController.php';
 
 $productController = new ProductController();
 $brandController = new BrandController();
-$accountController = new AccountController();
+$userController = new UserController();
+
 
 
 if (!empty($_GET['action'])) {
@@ -24,8 +25,8 @@ switch ($params[0]) {
 
         break;
     case 'home':
+  
         $productController->getFilteredProducts();
-
         break;
     case 'admins':
         $productController->adminView();
@@ -52,9 +53,13 @@ switch ($params[0]) {
         $productController->getProduct($params[1]);
         break;
     case 'signIn':
-        $accountController->addAccount();
+        $userController->signIn();
         break;
+    case 'newAdmin':
+            $userController->logIn();
+            break;
     default:
+  
         $productController->getFilteredProducts();
         break;
 }

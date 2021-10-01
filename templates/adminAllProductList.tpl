@@ -167,7 +167,14 @@
     </div>    
 </div>
 
+<div>
+    <form method="POST" action="newAdmin">
+        <input type="email" name="email" placeholder="email" required>
+        <input type="password" name="password" placeholder="" required>  
+        <button type="submit">Crear administrador</button>  
+    </form>
 
+</div>
 
 
 
