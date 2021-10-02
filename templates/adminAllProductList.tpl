@@ -175,12 +175,7 @@
     </form>
 
 </div>
-<div>
-    <form action="logOut">
-        <button >Cerrar sesion</button>  
-    </form>
 
-</div>
 
 
 

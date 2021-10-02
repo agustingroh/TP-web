@@ -15,11 +15,14 @@ class UserController
         $this->adminView = new AdminView();  
     }
 
+    private function logIn($userRole){
+      $password = password_hash($_POST['password'],PASSWORD_BCRYPT);
+      $this->userModel->logIn($_POST['email'],$password,$userRole);
+    }
 
-  public function logIn(){  
-       $password = password_hash($_POST['password'],PASSWORD_BCRYPT);
-       $this->userModel->logIn($_POST['email'],$password);
-       header("Location: /tp/admins");
+  public function newAdmin(){  
+    $this->logIn(UserRole::ADMIN); 
+    header("Location: /tp/admins");
         
     }
 
@@ -30,11 +33,9 @@ class UserController
             
             $_SESSION['role'] = $userData->role;
             $_SESSION['email'] = $userData->email;
-            header("Location: /tp/admins");
-            echo"valido";
+            header("Location: /tp/admins");        
             die();
-         }   
-        echo"no valido";
+         }         
         header('Location: /tp/home');
     
          
