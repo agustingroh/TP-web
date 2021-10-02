@@ -20,7 +20,7 @@ class BrandController
         try {
             if ($id)
             $this->brandModel->deleteBrand($id);
-            header("Location: /tp/admins");
+            header("Location: ".BASE_URL  . "admins");
         } catch (Exception $e) {
             $this->adminView->showMessage("La marca esta siendo utilizada por un producto",500);
         }
@@ -35,7 +35,7 @@ class BrandController
                 $this->adminView->showMessage("Bad request",400);              
             } else {
                 $this->brandModel->add($_POST['brand']);
-                header("Location: /tp/admins");
+                header("Location: ".BASE_URL  . "admins");
             }           
         }catch(Exception $e){         
             
@@ -50,7 +50,7 @@ class BrandController
         try{
             if(isset($_POST['id']) && isset($_POST['brand'])&& !empty($_POST['brand'])) {       
             $this->brandModel->edit($_POST['id'],$_POST['brand']);
-            header("Location: /tp/admins");
+            header("Location: ".BASE_URL  . "admins");
             }
             else{
                 $this->adminView->showMessage("Bad request",400);

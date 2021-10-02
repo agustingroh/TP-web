@@ -138,6 +138,7 @@ footer{
     background-color: white;
     margin-top: 5px;
     flex-flow: column;
+    height: 500px;
 }
 
 .filters-container{
@@ -145,8 +146,9 @@ footer{
     border-bottom: 5px solid  #001428; ;
 }
 
-h1{
+h1,h2{
     color: aliceblue;
+ 
 }
 .specificationsContainer{
     display: grid;
@@ -174,4 +176,22 @@ p{
 
 .description-column{
     width: 50vw;
+}
+
+
+.registration-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-flow: column;
+    align-items: center;  
+    height: 500px; 
+}
+
+.registration-label{
+    color:white;
+}
+
+#sign-in{
+    margin-left: 0;
 }

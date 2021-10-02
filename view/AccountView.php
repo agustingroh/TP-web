@@ -15,11 +15,13 @@ class AccountView{
         $this->smarty->display('templates/errorLogIn.tpl');
     }
 
-    public function showLogin(){
-       
-        $this->smarty->display('templates/login.tpl');
+    public function signInView(){       
+        $this->smarty->display('templates/registration.tpl');
     }
 
+    public function logInView(){
+        $this->smarty->display('templates/newAccount.tpl');
+    }
   
 
 }
