@@ -153,7 +153,10 @@ footer{
 }
 
 .brand-form{
-    height: 200px;
+    height: 180px;
+}
+.new-admin-form{
+    height: 265px;
 }
 
 .main-product-list-container{
@@ -176,27 +179,35 @@ h1,h2{
  
 }
 .specificationsContainer{
+
+    padding: 20px;
+
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 10vh 10vh 80vh;
-    grid-template-areas: "product product"
-                        "brand  description"
-                        "price  description";
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto ;
+    grid-template-areas: "product product product"
+                        "image description description"
+                        "image  brand price";
 
     margin: 30px;
 }
 .product { grid-area: product; }
 .brand { grid-area: brand; }
 .price { grid-area: price; }
+.image { grid-area: image; }
 .description {grid-area: description;}
 
+.back{
+    padding: 20px;
+}
+
 h3.especificationView{
-    color: aquamarine;
+    color:#5fb8b2;
 }
 
 p{
     font-size: x-large;
-    color: burlywood;
+    color:blanchedalmond
 }
 
 .description-column{
@@ -225,4 +236,14 @@ p{
 #start-session{
     margin-bottom: 0;
 }
-
+.image{
+    display: flex;
+    justify-content: center;
+}
+.style-image{
+    width: 350px;
+    
+}
+.product{
+    margin-bottom: 3vh;
+}

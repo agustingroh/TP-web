@@ -147,7 +147,7 @@
                 </div>
         </form>
 
-        <form id="edit-brand-form" class="new-row-form brand-form hide brand-form"  action="editBrand" method="POST"  class="needs-validation" >
+        <form id="edit-brand-form" class="new-row-form brand-form hide"  action="editBrand" method="POST"  class="needs-validation" >
                 <div>
                     <h3 class="form-title">Editar Marca</h3>
                 </div>          
@@ -165,23 +165,23 @@
              </div>
         </form>
 
-        <form id="new-product-form" class="new-row-form product-form"  action="newProduct" method="POST"  class="needs-validation" >
-        <div>
-            <h3 class="form-title">Crear nuevo administrador</h3>
-        </div>          
+        <form id="new-product-form" class="new-row-form new-admin-form"  action="newAdmin" method="POST"  class="needs-validation" >
+                <div>
+                    <h3 class="form-title">Crear nuevo administrador</h3>
+                </div>          
                 <div class="col-md-10 mb-3">
                     <label for="email">Email</label>
                     <input type="email"  name="email" class="form-control" id="validationTooltip01" placeholder="email"  required>      
                 </div>
                 <div class="col-md-10 mb-3">
-                    <label for="Password">Password</label>
-                    <input type="Password"  name="Password" class="form-control" id="validationTooltip02" placeholder="Password" required>   
+                    <label for="password">Password</label>
+                    <input type="password"  name="password" class="form-control" id="validationTooltip02" placeholder="Password" required>   
                 </div>
                  <div class="form-btn-container">
-                    <div class="btn-on">
-                        <button  class="btn btn-success" type="submit">Crear administrador</button>
-                </div>               
-            </div>
+                    
+                    <button  class="btn btn-success" type="submit">Crear administrador</button>
+                         
+                </div>
         </form>
     </div>    
 </div>
