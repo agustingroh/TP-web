@@ -11,6 +11,7 @@
      <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+  <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light navbar navbar-dark bg-dark">
         <a class="navbar-brand" href="home"><i class="bi bi-laptop"></i></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,13 +28,14 @@
           </ul>                    
         </div>        
           <div class="{if $userRole ==0  } show {else} hide {/if} ">        
-               <a href="registration" class="btn btn-outline-light " role="button" >Iniciar sesion</a>
+               <a href="registration" id="start-session" class="btn btn-success" role="button" >Iniciar sesion</a>
           </div>   
         <div class="{if $userRole !=0  } show {else} hide {/if} ">        
-               <a  class="btn btn-outline-light " href="logOut" role="button" >Cerrar Sesion</a>
+               <a  class="btn btn-info" href="logOut" role="button" >Cerrar Sesion</a>
         </div>   
        
 
          
     </div>    
     </nav>
+  </header>

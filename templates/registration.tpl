@@ -12,6 +12,14 @@
 </head>
 <body>
     <body>
+   <header> 
+   <div class="logo-label-container">
+    <div>
+    </div>
+    <div>
+    </div>
+   </div>
+   <div class="nav-container">
     <nav class="navbar navbar-expand-lg navbar-light bg-light navbar navbar-dark bg-dark">
         <a class="navbar-brand" href="home"><i class="bi bi-laptop"></i></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,7 +35,9 @@
             </li>             
           </ul>                    
         </div>
-  </nav>
+    </nav>
+</div>  
+ </header>   
     <div class="registration-container">
         <form method="POST" action="signIn">
         <h2>Iniciar sesion</h2>
