@@ -13,9 +13,9 @@ function __construct()
 
 
    
-    function signIn($email,$password){
+    function logIn($email,$password,$userRole){
         $stmt = $this->db->prepare("INSERT INTO User (email,password,role) VALUES (?,?,?)");
-        $stmt->execute(array($email,$password,1));
+        $stmt->execute(array($email,$password,$userRole));
       
     }
 

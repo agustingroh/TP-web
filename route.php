@@ -1,4 +1,5 @@
 <?php
+
 define('BASE_URL', '//' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']) . '/');
 
 require_once 'controller/ProductController.php';
@@ -21,11 +22,7 @@ if (!empty($_GET['action'])) {
 $params = explode('/', $action);
 
 switch ($params[0]) {
-    case 'coments':
-
-        break;
-    case 'home':
-  
+    case 'home':  
         $productController->getFilteredProducts();
         break;
     case 'admins':
@@ -52,14 +49,16 @@ switch ($params[0]) {
     case 'showProduct':
         $productController->getProduct($params[1]);
         break;
-    case 'logIn':
-        $userController->logIn();
-        break;
     case 'newAdmin':
-            $userController->signIn();
-            break;
-    default:
-  
+        $userController->newAdmin();
+        break;
+    case 'signIn':
+        $userController->signIn();
+        break;
+    case 'logOut':
+        $userController->logOut();
+        break;
+    default:  
         $productController->getFilteredProducts();
         break;
 }

@@ -21,19 +21,19 @@
             <li class="nav-item active">
               <a class="nav-link" href="home">Productos <span class="sr-only">(current)</span></a>
             </li>            
-              <li id="nav-admin" class="nav-item hide">
+              <li id="nav-admin" class="nav-item {if $userRole ==1} show {else} hide {/if} ">
               <a class="nav-link" href="admins">Administrador</a>
             </li>             
           </ul>
         </div>
-        <div>
-         <form method="POST" action="logIn">         
+       <div {if $userRole == 0 } class='show' {else} class='hide' {/if}>
+          <form method="POST" action="signIn">         
             <input name="email" placeholder="email" type="email" required>
             <input name="password" placeholder="Contraseña" type="password" required>
             <button id="sign-in" type="submit">Ingresar</button>
-        </form>       
-        </div>  
-        <div>
-        <h5>{$user}</h5>
-        </div>
-      </nav>
+          </form>         
+        </div> 
+        <div>        
+          <a href="logOut" class="btn btn-outline-light  {if $userRole !=0  } show {else} hide {/if} " role="button" >Cerrar Sesion</a>
+      </div>       
+    </nav>
