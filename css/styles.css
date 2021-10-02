@@ -4,6 +4,18 @@ body{
     background-color: #001428;
 }
 
+header{
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+}
+
+.logo-label-container{
+    width: 100%;
+    display: flex;
+    height: 50px;
+    background-color: yellow;
+}
 
 .main-container{
     margin-top: 20px;
@@ -138,6 +150,7 @@ footer{
     background-color: white;
     margin-top: 5px;
     flex-flow: column;
+    height: 500px;
 }
 
 .filters-container{
@@ -145,8 +158,9 @@ footer{
     border-bottom: 5px solid  #001428; ;
 }
 
-h1{
+h1,h2{
     color: aliceblue;
+ 
 }
 .specificationsContainer{
     display: grid;
@@ -174,4 +188,25 @@ p{
 
 .description-column{
     width: 50vw;
+}
+
+
+.registration-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-flow: column;
+    align-items: center;  
+    height: 500px; 
+}
+
+.registration-label{
+    color:white;
+}
+
+#sign-in{
+    margin-left: 0;
+}
+#start-session{
+    margin-bottom: 0;
 }

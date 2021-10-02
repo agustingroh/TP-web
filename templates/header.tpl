@@ -11,6 +11,7 @@
      <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+  <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light navbar navbar-dark bg-dark">
         <a class="navbar-brand" href="home"><i class="bi bi-laptop"></i></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -20,20 +21,21 @@
           <ul class="navbar-nav">
             <li class="nav-item active">
               <a class="nav-link" href="home">Productos <span class="sr-only">(current)</span></a>
-            </li>            
+            </li>  
               <li id="nav-admin" class="nav-item {if $userRole ==1} show {else} hide {/if} ">
               <a class="nav-link" href="admins">Administrador</a>
-            </li>             
-          </ul>
-        </div>
-       <div {if $userRole == 0 } class='show' {else} class='hide' {/if}>
-          <form method="POST" action="signIn">         
-            <input name="email" placeholder="email" type="email" required>
-            <input name="password" placeholder="Contraseña" type="password" required>
-            <button id="sign-in" type="submit">Ingresar</button>
-          </form>         
-        </div> 
-        <div>        
-          <a href="logOut" class="btn btn-outline-light  {if $userRole !=0  } show {else} hide {/if} " role="button" >Cerrar Sesion</a>
-      </div>       
+            </li>                  
+          </ul>                    
+        </div>        
+          <div class="{if $userRole ==0  } show {else} hide {/if} ">        
+               <a href="registration" id="start-session" class="btn btn-success" role="button" >Iniciar sesion</a>
+          </div>   
+        <div class="{if $userRole !=0  } show {else} hide {/if} ">        
+               <a  class="btn btn-info" href="logOut" role="button" >Cerrar Sesion</a>
+        </div>   
+       
+
+         
+    </div>    
     </nav>
+  </header>

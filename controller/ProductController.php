@@ -34,7 +34,7 @@ class ProductController
             $this->adminView->showAdminView($products, $brands, UserRole::ADMIN);
         }
         else
-        header("Location: /tp/home"); // lo enviamos al home si no es admin
+        header("Location: ".BASE_URL  . "home"); // lo enviamos al home si no es admin
         
         
      
@@ -55,7 +55,7 @@ class ProductController
             $this->adminView->showMessage("No se pudo eliminar el producto", 500);
         }
 
-        header("Location: /tp/admins");
+        header("Location: ".BASE_URL  . "admins");
         die();
     }
 
@@ -64,7 +64,7 @@ class ProductController
         try {
             if (isset($_POST['product']) && (isset($_POST['price'])) && (isset($_POST['description'])) && (isset($_POST['brand'])) && !empty($_POST['description']) && !empty($_POST['price']) && !empty($_POST['product'])) {
                 $this->productModel->add($_POST['description'], $_POST['brand'], $_POST['price'], $_POST['product']);
-                header("Location: /tp/admins");
+                header("Location: ".BASE_URL  . "admins");
             } else {
                 $this->adminView->showMessage("Completa todos los campos", 400);
             }
@@ -79,7 +79,7 @@ class ProductController
         try {
             if (isset($_POST['product']) && (isset($_POST['price'])) && (isset($_POST['description'])) && (isset($_POST['brand'])) && !empty($_POST['description']) && !empty($_POST['price']) && !empty($_POST['product'])) {
                 $this->productModel->edit($_POST['id'], $_POST['product'], $_POST['description'], $_POST['brand'], $_POST['price']);
-                header("Location: /tp/admins");
+                header("Location: ".BASE_URL  . "admins");
                 die();
             } else $this->adminView->showMessage("Algo ha salido mal", 400);
         } catch (Exception $e) {

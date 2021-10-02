@@ -58,7 +58,15 @@ switch ($params[0]) {
     case 'logOut':
         $userController->logOut();
         break;
-    default:  
-        $productController->getFilteredProducts();
+    case 'registration':
+        $userController->showSignInView();
         break;
+    case 'newAccount':
+        $userController->logInView();
+        break;
+    case 'newUser':
+        $userController->newUser();
+        break;
+    default:
+    break;
 }

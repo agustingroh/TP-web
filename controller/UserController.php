@@ -20,11 +20,18 @@ class UserController
       $this->userModel->logIn($_POST['email'],$password,$userRole);
     }
 
-  public function newAdmin(){  
-    $this->logIn(UserRole::ADMIN); 
-    header("Location: /tp/admins");
+   public function newAdmin(){  
+      $this->logIn(UserRole::ADMIN); 
+      header("Location: ".BASE_URL  . "admins");
+      $this->signIn();
         
     }
+
+   public function newUser(){  
+      $this->logIn(UserRole::BILLING); 
+      $this->signIn();   
+          
+      }
 
     public function signIn(){  
       $userData =  $this->userModel->get($_POST['email']);
@@ -33,18 +40,25 @@ class UserController
             
             $_SESSION['role'] = $userData->role;
             $_SESSION['email'] = $userData->email;
-            header("Location: /tp/admins");        
+            header("Location: ".BASE_URL  . "admins");        
             die();
          }         
-        header('Location: /tp/home');
-    
+        header('Location: /tp/home');    
          
+     }
+
+     public function showSignInView(){
+        $this->accountView->signInView();
+     }
+
+     public function logInView(){
+      $this->accountView->logInView();
      }
 
      public function logOut (){
         session_start();
         session_destroy();
-        header("Location: /tp/home");
+        header("Location:".BASE_URL  . "home");
      }
      
 
