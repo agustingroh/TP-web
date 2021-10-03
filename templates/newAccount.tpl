@@ -48,7 +48,10 @@
             <div class="form-group">
                 <button id="sign-in" class="btn btn-primary" type="submit">Crear cuenta</button>            
             </div> 
-        </form>              
+        </form>  
+        <div>
+            <p class="billing-user-message">{$message}</p>
+        </div>            
     </div>        
 </body>
 </html>

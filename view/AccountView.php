@@ -19,7 +19,8 @@ class AccountView{
         $this->smarty->display('templates/registration.tpl');
     }
 
-    public function logInView(){
+    public function logInView($message=''){
+        $this->smarty->assign('message',$message);
         $this->smarty->display('templates/newAccount.tpl');
     }
   

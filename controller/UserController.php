@@ -16,13 +16,21 @@ class UserController
     }
 
     private function logIn($userRole){
+       try{
       $password = password_hash($_POST['password'],PASSWORD_BCRYPT);
       $this->userModel->logIn($_POST['email'],$password,$userRole);
+       }catch(Exception $e){
+          if($userRole==UserRole::BILLING){
+          $this->accountView->logInView("¡El usuario ya existe!");
+          }else{
+            $this->adminView->showMessage("¡El usuario ya existe!", 400);
+          }
+          die();
+       }
     }
 
    public function newAdmin(){  
-      $this->logIn(UserRole::ADMIN); 
-      header("Location: ".BASE_URL  . "admins");
+      $this->logIn(UserRole::ADMIN);      
       $this->signIn();
         
     }
@@ -36,8 +44,7 @@ class UserController
     public function signIn(){  
       $userData =  $this->userModel->get($_POST['email']);
          if(password_verify($_POST['password'],$userData->password)){
-            session_start();
-            
+            session_start();            
             $_SESSION['role'] = $userData->role;
             $_SESSION['email'] = $userData->email;
             header("Location: ".BASE_URL  . "admins");        
