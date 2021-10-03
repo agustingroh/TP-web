@@ -120,6 +120,7 @@ footer{
 
 .bi-exclamation-triangle-fill{
     font-size: 8em;
+    color: #02acff;
 }
 
 .advertising-logo{    
@@ -303,4 +304,9 @@ p{
   
   .dropdown a:hover {background-color: #ddd;}
   
-  .show {display: block;}
+  .show {display: block;
+}
+
+.user-message{
+    color:#ffe301;
+}
