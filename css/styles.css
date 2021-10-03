@@ -26,15 +26,10 @@ header{
     
 }
 
-
-
-
-
 .main-container{
     margin-top: 20px;
     display: flex;  
     flex-flow: column;    
-    
 }
 
 .admin-tables{
@@ -169,6 +164,27 @@ footer{
     height: 500px;
 }
 
+.main-product-container{
+    display:flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+    width:100%;
+    height: 500px; 
+    border-top: solid 1px black;
+}
+
+.product-menu{
+    width: 25%;  
+    height: 500px;
+    border-right: solid 3px #5fb8b2;
+}
+
+.product-list-container{
+    width: 75%;
+    height: 500px;
+    background-color: white;   
+}
+
 .filters-container{
     margin-bottom: 3px;
     border-bottom: 5px solid  #001428; ;
@@ -247,3 +263,44 @@ p{
 .product{
     margin-bottom: 3vh;
 }
+
+
+#drop-btn {
+    background-color: #3498DB;
+    color: white;
+    padding: 16px;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+    width: 24.6vw;
+  }
+  
+  .dropbtn:hover, .dropbtn:focus {
+    background-color: #2980B9;
+  }
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    width: 24.6vw;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown a:hover {background-color: #ddd;}
+  
+  .show {display: block;}

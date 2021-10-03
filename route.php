@@ -23,7 +23,7 @@ $params = explode('/', $action);
 
 switch ($params[0]) {
     case 'home':  
-        $productController->getFilteredProducts();
+        $productController->getFilteredProducts($params[1]);
         break;
     case 'admins':
         $productController->adminView();

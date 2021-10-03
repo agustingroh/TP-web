@@ -110,15 +110,16 @@ class ProductController
 
 
 
-    public function getFilteredProducts()
+    public function getFilteredProducts($params)
     {
      
         try {
             $brands = $this->brandModel->getAllBrands();
-            if ($_POST['brand'] == 'allbrands' || empty($_POST['brand']))
+            if (!$params || $params=='allbrands')
                 $products =  $this->productModel->getAll();
             else
-                $products = $this->productModel->getAllProductsByBrandId($_POST['brand']);
+                $products = $this->productModel->getAllProductsByBrandId($params);
+            
 
             session_start();
             if (isset($_SESSION['email'])) {
