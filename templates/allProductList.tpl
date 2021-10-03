@@ -1,21 +1,22 @@
 
 {include file='templates/header.tpl'} 
 
-<div class="main-product-list-container">
-   <div class="filters-container">
-   <form action="home" method="post">
-        <label for="brand">Filtro de marcas </label>
-                    <select name ="brand">
-                        <option  value='allbrands'>Todas las marcas</option>         
-                        {foreach from=$brands item=$brand}                     
-                           <option  value={$brand->id_brand}>{$brand->brand_name}</option>        
-                        {/foreach}        
-                    </select> 
-   <input type="submit" name="submit" value="filtrar" >
-</form>              
-   </div>
-   <div>
-      <table class="table table-striped">
+
+<div class="main-product-container">
+   <aside class="product-menu">
+     <div class="dropdown">
+         <button  id="drop-btn">Nuestras marcas<span><i class="bi bi-caret-down-fill"></i></span></button>
+            <div id="myDropdown" class="dropdown-content">
+                 
+                     <a href='home/allbrands'>Todas las marcas</a>
+                 {foreach from=$brands item=$brand}  
+                     <a  href="home/{$brand->id_brand}">{$brand->brand_name} </a>
+                   {/foreach} 
+            </div>
+      </div>
+   </aside>
+   <div class="product-list-container">
+    <table class="table table-striped">
          <thead>
             <tr>
                <th scope="col">Producto</th>
@@ -28,14 +29,18 @@
                <tr>
                   <th scope="row"><a href="showProduct/{$product->id_product}"  data-toggle="tooltip" data-placement="top" title="Ver detalles"> {$product->component}</a></th>
                   <td >{$product->brand_name}</td>
-                  <td>{$product->price}</td>
+                  <td>${$product->price}</td>
                </tr>
             {/foreach}
          </tbody>
       </table>
+
    </div>
-</div>
+
+<div>
 
 
+
+<script type="text/javascript" src="js/main.js"></script>
 {include file='templates/footer.tpl'}
 
