@@ -22,10 +22,12 @@
       <h3 class="especificationView">Precio: </h3>
       <p> ${$product->price}</p>
    </div> 
+
+   <div class="cart">
+      <a href="home" class="btn btn-primary"><i class="bi bi-search"></i> Seguir comprando </a>
+   </div>
 </div>
 
-<div class="back">
-    <a href="home">Volver</a>
-</div>
+
 
 {include file='templates/footer.tpl'}

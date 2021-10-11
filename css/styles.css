@@ -202,7 +202,7 @@ h1,h2{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: auto ;
-    grid-template-areas: "product product product"
+    grid-template-areas: "product product cart"
                         "image description description"
                         "image  brand price";
 
@@ -213,6 +213,7 @@ h1,h2{
 .price { grid-area: price; }
 .image { grid-area: image; }
 .description {grid-area: description;}
+.cart {grid-area: cart;}
 
 .back{
     padding: 20px;
