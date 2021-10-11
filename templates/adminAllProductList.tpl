@@ -21,8 +21,8 @@
                         <td>{$product->brand_name}</td>
                         <td class="description-column">{$product->description}</td>
                         <td> $ {$product->price}</td>
-                        <td>                     
-                            <button type="button" class="delete-product btn btn-danger" data-delete={$product->id_product} ><i class="bi bi-trash"></i> Borrar</button> 
+                        <td>  
+                        <a class="delete-product btn btn-danger" href="deleteProduct/{$product->id_product}"><i class="bi bi-trash"></i> Borrar</a>                          
                             <button type="button" class="edit-product  btn btn-warning" data-price={$product->price} 
                             data-description="{$product->description }"
                             data-idbrand={$product->id_brand} data-component="{$product->component}" data-update={$product->id_product}><i class="bi bi-pencil"></i> Editar</button>
@@ -46,7 +46,7 @@
                     <tr>     
                         <td >{$brand->brand_name}</td> 
                         <td class="edit-delete-brand-buttons">
-                            <button type="button" class="delete-brand btn btn-danger" data-delete={$brand->id_brand}><i class="bi bi-trash"></i> Borrar</button> 
+                        <a class="delete-brand btn btn-danger"  href="deleteBrand/{$brand->id_brand}"><i class="bi bi-trash"></i> Borrar</a>                           
                             <button type="button" class="get-brand-data btn btn-warning" data-name={$brand->brand_name} data-update={$brand->id_brand}><i class="bi bi-pencil"></i>Editar</button>
                         </td>
                     </tr>   

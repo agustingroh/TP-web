@@ -2,18 +2,6 @@ document.addEventListener("DOMContentLoaded", function (e) {
   "use_strict";
 
 
-
-  document.querySelectorAll(".delete-product").forEach(btn => {
-    btn.addEventListener("click", () => {
-      deleteProduct(btn.dataset.delete);
-    });
-  });
-
-  function deleteProduct(id) {
-    let url = `/tp/deleteProduct/${id}`;
-    window.location.href = url;
-  }
-
   document.querySelectorAll(".edit-product").forEach(btn => {
     btn.addEventListener("click", () => {
       getProductData(btn.dataset.update, btn.dataset.description, btn.dataset.component, btn.dataset.price, btn.dataset.idbrand); //btn.dataset.description solo guarda la primer palabra
@@ -43,19 +31,6 @@ function cancelProductEdit(){
 
 
   // Brands
-
-  // Delete
-  document.querySelectorAll(".delete-brand").forEach(btn => {
-    btn.addEventListener("click", () => {
-      deleteBrand(btn.dataset.delete);
-    });
-  });
-
-  function deleteBrand(id) {
-    let url = `/tp/deleteBrand/${id}`;
-    window.location.href = url;
-  }
-
 
   document.querySelectorAll(".get-brand-data").forEach(btn => {
     btn.addEventListener("click", () => {
