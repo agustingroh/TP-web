@@ -20,8 +20,7 @@ class ProductController
         $this->productModel = new ProductModel();
         $this->productView = new ProductView();
         $this->adminView = new AdminView();
-        $this->brandModel = new BrandModel();
-        $this->accountView = new AccountView();
+        $this->brandModel = new BrandModel();        
     }
 
 

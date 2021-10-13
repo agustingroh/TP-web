@@ -4,7 +4,7 @@ require_once 'model/UserModel.php';
 require_once 'view/AccountView.php';
 class UserController
 {
-
+    private $adminView;
     private $userModel;
     private $accountView;
 
@@ -17,8 +17,8 @@ class UserController
 
     private function logIn($userRole){
        try{
-      $password = password_hash($_POST['password'],PASSWORD_BCRYPT);
-      $this->userModel->logIn($_POST['email'],$password,$userRole);
+         $password = password_hash($_POST['password'],PASSWORD_BCRYPT);
+         $this->userModel->logIn($_POST['email'],$password,$userRole);
        }catch(Exception $e){
           if($userRole==UserRole::BILLING){
           $this->accountView->logInView("¡El usuario ya existe!");
@@ -43,9 +43,7 @@ class UserController
 
     public function signIn(){  
        try{   
-         $userData =  $this->userModel->get($_POST['email']);
-         echo"USER DATA";
-         var_dump($userData);
+         $userData =  $this->userModel->get($_POST['email']);        
          if(password_verify($_POST['password'],$userData->password)){
             session_start();            
             $_SESSION['role'] = $userData->role;
@@ -58,7 +56,7 @@ class UserController
             die();
          }else if($userData!=false)             
             $this->accountView->signInView("¡Contraseña incorrecta!");   // si ingresa mal la contraseña mostramos el error  
-         else
+          else
             $this->accountView->signInView("¡El usuario no existe"); 
 
       }catch(Exception $e){
