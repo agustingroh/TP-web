@@ -30,17 +30,10 @@ class ProductController
         if (isset($_SESSION['email']) && $_SESSION['role'] == UserRole::ADMIN)  {   // Checkeamos que el usuario sea admin
             $products =  $this->productModel->getAll();
             $brands = $this->brandModel->getAllBrands();                          
-            $this->adminView->showAdminView($products, $brands, UserRole::ADMIN);
+            $this->adminView->showAdminView($products, $brands,"Admistrador");
         }
         else
-        header("Location: ".BASE_URL  . "home"); // lo enviamos al home si no es admin
-        
-        
-     
-
-
-
-     
+        header("Location: ".BASE_URL  . "home"); // lo enviamos al home si no es admin     
     }
 
     public function deleteProduct($id)
@@ -93,15 +86,10 @@ class ProductController
             $product =  $this->productModel->get($id);
             if (empty($product))
                 $this->adminView->showMessage("Ese producto no existe", 400);
-            session_start();
-
-            if (isset($_SESSION['email'])) {
-                if ($_SESSION['role'] == UserRole::ADMIN)
-                    $this->productView->showProduct($product,UserRole::ADMIN);
-                else
-                    $this->productView->showProduct($product, UserRole::BILLING);
-            } else
-                $this->productView->showProduct($product, UserRole::VIEWER);
+           
+            session_start();           
+                    $this->productView->showProduct($product,"Producto");  
+                 
         } catch (Exception $e) {
             $this->adminView->showMessage("Bad request", 400);
         }
@@ -117,17 +105,11 @@ class ProductController
             if (!$params || $params=='allbrands')
                 $products =  $this->productModel->getAll();
             else
-                $products = $this->productModel->getAllProductsByBrandId($params);
-            
+                $products = $this->productModel->getAllProductsByBrandId($params);           
 
-            session_start();
-            if (isset($_SESSION['email'])) {
-                if ($_SESSION['role'] == UserRole::ADMIN)
-                $this->productView->showAllProducts($products, $brands, UserRole::ADMIN);               
-                else
-                $this->productView->showAllProducts($products, $brands, UserRole::BILLING);                 
-            } else
-            $this->productView->showAllProducts($products, $brands, UserRole::VIEWER);           
+            session_start();                      
+                $this->productView->showAllProducts($products, $brands,"Inicio");                 
+                         
         } catch (Exception $e) {
             $this->adminView->showMessage("Bad request", 400);
         }

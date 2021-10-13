@@ -11,21 +11,18 @@ class ProductView
     }
 
 
-    public function showAllProducts($products, $brands, $userRole)
-    {
-      
+    public function showAllProducts($products, $brands,$title)
+    {      
         $this->smarty->assign('products', $products);
-        $this->smarty->assign('brands', $brands);
-        $this->smarty->assign('userRole', $userRole);        
-        $this->smarty->display('templates/allProductList.tpl');
+        $this->smarty->assign('brands', $brands); 
+        $this->smarty->assign('title', $title);              
+        $this->smarty->display('templates/home.tpl');
     }
 
-    public function showProduct($product,$userRole)
-    {
+    public function showProduct($product,$title)    {
 
-        $this->smarty->assign('product', $product);
-        $this->smarty->assign('userRole', $userRole); 
-   
+        $this->smarty->assign('product', $product); 
+        $this->smarty->assign('title', $title);  
         $this->smarty->display('templates/productSpecifications.tpl');
     }
 }
