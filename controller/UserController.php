@@ -21,7 +21,7 @@ class UserController
          $this->userModel->logIn($_POST['email'],$password,$userRole);
        }catch(Exception $e){
           if($userRole==UserRole::BILLING){
-          $this->accountView->logInView("¡El usuario ya existe!");
+          $this->accountView->logInView("¡El usuario ya existe!","Crear cuenta");
           }else{
             $this->adminView->showMessage("¡El usuario ya existe!", 400);
           }
@@ -55,9 +55,9 @@ class UserController
                header("Location: ".BASE_URL  . "home");
             die();
          }else if($userData!=false)             
-            $this->accountView->signInView("¡Contraseña incorrecta!");   // si ingresa mal la contraseña mostramos el error  
+            $this->accountView->signInView("¡Contraseña incorrecta!","Iniciar Sesion");   // si ingresa mal la contraseña mostramos el error  
           else
-            $this->accountView->signInView("¡El usuario no existe"); 
+            $this->accountView->signInView("¡El usuario no existe", "Iniciar Sesion"); 
 
       }catch(Exception $e){
          $this->adminView->showMessage("Bad request", 400);
@@ -67,11 +67,11 @@ class UserController
      }
 
      public function showSignInView(){
-        $this->accountView->signInView();
+        $this->accountView->signInView(null,"Iniciar Sesion");
      }
 
      public function logInView(){
-      $this->accountView->logInView();
+      $this->accountView->logInView(null,"Crear cuenta");
      }
 
      public function logOut (){

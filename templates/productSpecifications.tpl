@@ -1,5 +1,6 @@
 
 {include file='templates/header.tpl'} 
+{include file='templates/nav.tpl'} 
 
 <div class="specificationsContainer">
    <h1 class="product"> {$product->component}</h1>

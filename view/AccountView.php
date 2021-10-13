@@ -10,18 +10,21 @@ class AccountView{
     }
 
 
-    public function showMessage($msg){
+    public function showMessage($msg,$title){
         $this->smarty->assign('message',$msg);
+        $this->smarty->assign('title', $title);  
         $this->smarty->display('templates/errorLogIn.tpl');
     }
 
-    public function signInView($message=''){   
-        $this->smarty->assign('message',$message);    
+    public function signInView($message='',$title){   
+        $this->smarty->assign('message',$message);
+        $this->smarty->assign('title', $title);  
         $this->smarty->display('templates/registration.tpl');
     }
 
-    public function logInView($message=''){
+    public function logInView($message='',$title){
         $this->smarty->assign('message',$message);
+        $this->smarty->assign('title', $title); 
         $this->smarty->display('templates/newAccount.tpl');
     }
   
