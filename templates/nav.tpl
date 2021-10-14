@@ -21,7 +21,7 @@
                 <div class="{if $smarty.session.role ==null  } show {else} hide {/if} ">        
                       <a href="registration" id="start-session" class="btn btn-success" role="button" >Iniciar sesion</a>
                 </div>   
-                <div class="{if $smarty.session.role!=0  } show {else} hide {/if} ">        
+                <div class="{if $smarty.session.role!=null  } show {else} hide {/if} ">        
                       <a  class="btn btn-info" href="logOut" role="button" >Cerrar Sesion</a>
                 </div>             
             </nav>            
