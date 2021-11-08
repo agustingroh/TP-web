@@ -185,6 +185,28 @@
                 </div>
         </form>
     </div>    
+  <!--brand table-->
+       <div class="brand-table-container"> 
+            <table id = "brand-table" class="table table-striped table-dark">
+                <thead>
+                    <tr>       
+                        <th scope="col">email</th>                       
+                        <th scope="col">rol</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {foreach from=$users item=$user}
+                    <tr>                        
+                        <td >{$user->email}</td> 
+                       <td> {if $user->role==1} <a class=" btn btn-warning"  href="userRole/{$user->id_user}/0"> cambiar rol  a billing</a> {else} <a class="btn btn-danger"  href="userRole/{$user->id_user}/1"> cambiar rol a admin</a>{/if}</td>
+                    </tr>   
+                    {/foreach}    
+                </tbody>
+            </table>
+       </div> 
+    </div>  
+
 </div>
 
 

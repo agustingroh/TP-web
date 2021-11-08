@@ -67,6 +67,9 @@ switch ($params[0]) {
     case 'newUser':
         $userController->newUser();
         break;
+    case 'userRole':
+        $userController->edit($params[1],$params[2]);
+        break;
     default:
     break;
 }

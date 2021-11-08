@@ -9,12 +9,14 @@ class AdminView {
         $this->smarty= new Smarty();
     }
     
-    public function showAdminView($products,$brands,$title){   
+    public function showAdminView($products,$brands,$title,$users){   
        
-        
+        var_dump($users);
         $this->smarty->assign('products',$products);
         $this->smarty->assign('brands',$brands); 
-        $this->smarty->assign('title',$title);     
+        $this->smarty->assign('title',$title); 
+        $this->smarty->assign('users',$users); 
+
         $this->smarty->display('templates/adminAllProductList.tpl');
        
 
