@@ -17,7 +17,7 @@ class AdminView {
         $this->smarty->assign('title',$title); 
         $this->smarty->assign('users',$users); 
 
-        $this->smarty->display('templates/adminAllProductList.tpl');
+        $this->smarty->display('templates/admin.tpl');
        
 
     }
