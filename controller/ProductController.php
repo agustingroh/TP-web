@@ -13,6 +13,7 @@ class ProductController
     private $productView;
     private $adminView;
     private $brandModel;
+    private $userModel;
     
 
     function __construct()
@@ -20,7 +21,8 @@ class ProductController
         $this->productModel = new ProductModel();
         $this->productView = new ProductView();
         $this->adminView = new AdminView();
-        $this->brandModel = new BrandModel();        
+        $this->brandModel = new BrandModel();    
+        $this->userModel = new UserModel();    
     }
 
 
@@ -29,8 +31,9 @@ class ProductController
         session_start();     
         if (isset($_SESSION['email']) && $_SESSION['role'] == UserRole::ADMIN)  {   // Checkeamos que el usuario sea admin
             $products =  $this->productModel->getAll();
-            $brands = $this->brandModel->getAllBrands();                          
-            $this->adminView->showAdminView($products, $brands,"Admistrador");
+            $brands = $this->brandModel->getAllBrands();
+            $users = $this->userModel->getAll();                          
+            $this->adminView->showAdminView($products, $brands,"Admistrador",$users);
         }
         else
         header("Location: ".BASE_URL  . "home"); // lo enviamos al home si no es admin     

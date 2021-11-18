@@ -26,4 +26,26 @@ function __construct()
         
     }
 
+    function getAll(){
+        $stmt = $this->db->prepare("SELECT id_user,email,role FROM User");
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    function edit($userId,$role){
+        $stmt = $this->db->prepare("UPDATE User SET role=? WHERE id_user=?");
+        $stmt->execute(array($role,$userId));
+    }
+
+    function delete($userId){
+        $stmt = $this->db->prepare("DELETE FROM User WHERE id_user=?");
+        $stmt->execute(array($userId));
+    }
+
+    function getById($userId){
+        $stmt = $this->db->prepare("SELECT id_user,email,role FROM User WHERE id_user=?");
+        $stmt->execute(array($userId));
+        return $stmt->fetch(PDO::FETCH_OBJ);
+    }
+
 }
