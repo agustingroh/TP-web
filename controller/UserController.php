@@ -99,4 +99,25 @@ class UserController
          $this->adminView->showMessage("Server error", 500);
       }
    }
+
+   public function delete($userId)
+   {
+      try {
+         session_start();
+         if ($_SESSION['role'] == UserRole::ADMIN && $_SESSION['email'] && $userId != null) {
+            $user = $this->userModel->getById($userId);
+            if ($user->email == $_SESSION['email']) {
+               $this->adminView->showMessage("Bad request", 400);
+               die();
+            } else {
+               $this->userModel->delete($userId);
+               header("Location:" . BASE_URL  . "admins");
+            }
+         } else {
+            $this->adminView->showMessage("Bad request", 400);
+         }
+      } catch (Exception $e) {
+         $this->adminView->showMessage("Server error", 500);
+      }
+   }
 }

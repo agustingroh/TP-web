@@ -205,8 +205,28 @@
                 </tbody>
             </table>
        </div> 
-    </div>  
 
+        <!--brand table-->
+       <div class="brand-table-container"> 
+            <table id = "brand-table" class="table table-striped table-dark">
+                <thead>
+                    <tr>       
+                        <th scope="col">email</th>                       
+                        <th scope="col"></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {foreach from=$users item=$user}
+                    <tr>                        
+                        <td >{$user->email}</td> 
+                       <td><a class=" btn btn-danger"  href="deleteUser/{$user->id_user}">Eliminar usuario</a> </td>
+                    </tr>   
+                    {/foreach}    
+                </tbody>
+            </table>
+       </div> 
+    </div>  
 </div>
 
 

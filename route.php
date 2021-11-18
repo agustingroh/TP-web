@@ -70,6 +70,9 @@ switch ($params[0]) {
     case 'userRole':
         $userController->edit($params[1],$params[2]);
         break;
+    case 'deleteUser':
+        $userController->delete($params[1]);
+        break;
     default:
     break;
 }

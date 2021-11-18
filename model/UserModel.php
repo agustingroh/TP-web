@@ -37,4 +37,15 @@ function __construct()
         $stmt->execute(array($role,$userId));
     }
 
+    function delete($userId){
+        $stmt = $this->db->prepare("DELETE FROM User WHERE id_user=?");
+        $stmt->execute(array($userId));
+    }
+
+    function getById($userId){
+        $stmt = $this->db->prepare("SELECT id_user,email,role FROM User WHERE id_user=?");
+        $stmt->execute(array($userId));
+        return $stmt->fetch(PDO::FETCH_OBJ);
+    }
+
 }
