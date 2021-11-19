@@ -205,7 +205,7 @@ h1,h2{
     grid-template-areas: "product product cart"
                         "image description description"
                         "image  brand price"
-                        "comment comment . ";
+                        "comment comment new-comment ";
 
     margin: 30px;
 }
@@ -216,6 +216,7 @@ h1,h2{
 .description {grid-area: description;}
 .cart {grid-area: cart;}
 .comment-container {grid-area: comment;}
+.new-comment-container {grid-area: new-comment;}
 
 .back{
     padding: 20px;
@@ -351,12 +352,13 @@ p{
     background-color: grey;
 }
 
-
-
-
 .highlighted{
     font-weight: bold;
     font-size: 15px;
+}
+
+.new-comment-container{
+    margin-left: 5px;
 }
 
 

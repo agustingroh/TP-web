@@ -27,4 +27,19 @@ class commentController
             $this->apiView->response(null, 500);
         }
     }
+
+    function addComment($params = [])
+    {
+        $this->data = file_get_contents("php://input"); 
+       $data = json_decode($this->data); 
+       echo "ACAAAA";
+        var_dump($data);
+        
+        try {
+            if (!empty($params)) {}
+
+        }catch (Exception $e) {
+            $this->apiView->response(null, 500);
+        }
+    }
 }

@@ -1,7 +1,14 @@
 
 document.addEventListener("DOMContentLoaded", function (e) {
-    const URL = "http://localhost/tp/api/comment";
+   
     "use_strict";
+
+    const URL = "http://localhost/tp/api/comment";
+
+    document.querySelector("#comment-form").addEventListener("submit", (e)=>{
+        e.preventDefault();
+        sendComment();
+    }); 
   
     getData();
      async function getData(){    
@@ -31,4 +38,31 @@ document.addEventListener("DOMContentLoaded", function (e) {
            
        });
     }
+
+    async function sendComment(){
+    
+        let comment = document.querySelector("#user-comment").value;
+        let punctuation = document.querySelector("#user-punctuation").value;
+
+        console.log(comment);
+        console.log(punctuation);
+
+        let data = {};
+        data.comment = comment;
+        data.punctuation = punctuation;
+        data.productId =+window.location.href.split("/")[5];  
+
+     const success =  fetch(URL, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},          
+            body: JSON.stringify(data) 
+         })
+         .then(response => {
+             getData();
+         })
+         .catch(error => console.log(error));
+    }
+
+
+    
 });

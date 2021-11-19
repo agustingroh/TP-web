@@ -28,14 +28,27 @@
       <a href="home" class="btn btn-primary"><i class="bi bi-search"></i> Seguir comprando </a>
    </div>
    
-    <div class="comment-container">
-     
+    <div class="comment-container">     
          <div class="comment-title">
             <h4 class="productTitle" >Comentarios del producto</h4>
          </div>
          <div class="comment-area">
-         </div>
-     
+         </div>     
+    </div>
+
+    <div class="new-comment-container">
+      <form  id="comment-form" action="api/comment" method="POST">
+         <input id="user-comment" name="comment"  placeholder="Escriba su comentario del producto...">
+         <select id="user-punctuation" name="puctuation">
+            <option value="1" default=1 >1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+         </select>
+      <button type="submit">Enviar comentario</button>
+      </form>
+    
     </div>
 
     
