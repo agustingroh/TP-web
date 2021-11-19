@@ -4,6 +4,10 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
     const URL = "http://localhost/tp/api/comment";
 
+    document.querySelector("#sort").addEventListener("change", (e) => {
+        getSortData(e.target.value);
+    });
+
     document.querySelector("#comment-form").addEventListener("submit", (e) => {
         e.preventDefault();
         let data = getCommentData();
@@ -13,6 +17,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
     getData();
     async function getData() {
         var productId = +window.location.href.split("/")[5];
+        console.log(productId);
         const response = await fetch(`${URL}/${productId}`);
         if (response.ok) {
             const comments = await response.json();
@@ -23,7 +28,24 @@ document.addEventListener("DOMContentLoaded", function (e) {
         }
     }
 
-    function view(comments) {    
+    async function getSortData(sort) {
+        const params = sort.split(" ");
+        if (sort == "All")
+            getData();
+        else {
+            var productId = +window.location.href.split("/")[5];
+            const response = await fetch(`${URL}/${productId}/prueba`);
+            if (response.ok) {
+                const comments = await response.json();
+                view(comments);
+
+            } else {
+                console.log("error");
+            }
+        }
+    }
+
+    function view(comments) {
 
         let commentContainner = document.querySelector(".comment-area");
         commentContainner.innerHTML = "";
@@ -33,39 +55,11 @@ document.addEventListener("DOMContentLoaded", function (e) {
                 <div class="punctuation">
                     <p class="comment"> Puntuacion: <span class="highlighted">${comment.punctuation}</span></p>
                 </div>         
-            <p class="comment"> Comentario: ${comment.comment}</p>
-            <div>
-                <button class="delete-brand btn btn-danger" id='deleteComment'><i class="bi bi-trash"></i>Borrar
-            </div>
+            <p class="comment"> Comentario: ${comment.comment}</p>            
             </div>`;
 
         });
     }
-
-    //document.querySelector("#deleteComment").addEventListener("click", prueba());
-
-    // function prueba(){
-    //     console.log('prueba');
-    // }
-
-    // async function deleteComment(id_comment) {
-
-    //     try {
-    //         const success = await fetch(`${URL}/${id_comment}`, {
-    //             method: 'DELETE',
-    //             headers: {
-    //                 'Content-Type': 'application/json',
-    //                 'Accept': 'application/json'
-    //             },
-            
-    //         });
-    //         if (success) {
-    //             getData();
-    //         }
-    //     } catch (error) {
-    //         console.log(error);
-    //     }
-    // }
 
     // TO DO GET FORM DATA 
     function getCommentData() {

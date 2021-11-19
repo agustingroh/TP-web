@@ -15,7 +15,10 @@
                     </li>  
                     <li id="nav-admin" class="nav-item {if $smarty.session.role ==1} show {else} hide {/if} ">                 
                       <a class="nav-link" href="admins">Administrador</a>
-                    </li>                  
+                    </li>
+                    <li id="nav-admin" class="nav-item {if $smarty.session.role ==1} show {else} hide {/if} ">                 
+                      <a class="nav-link" href="adminComments">Administrar comentarios</a>
+                    </li>                    
                   </ul>                    
                 </div>        
                 <div class="{if $smarty.session.role ==null  } show {else} hide {/if} ">        

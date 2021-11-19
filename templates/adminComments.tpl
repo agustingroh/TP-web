@@ -13,22 +13,12 @@
                         <th scope="col"></th>
                     </tr>
                 </thead>
-                <tbody>
-                    {foreach from=$comments item=$comment}
-                    <tr>     
-                        <td>{$comment->email}</td>
-                        <td>{$comment->component}</td>
-                        <td class="description-column">{$comment->comment}</td>
-                        <td>{$comment->punctuation}</td>
-                        <td>  
-                        <a class="delete-product btn btn-danger" href="api/comment/{$product->id_product}"><i class="bi bi-trash"></i> Borrar</a> 
-                        {* como pongo el method delete????????? *}
-                        </td>
-                    </tr>   
-                    {/foreach}    
+                <tbody id="comment-section">                                
                 </tbody>
             </table>
         </div>
     </div>
  </div>
+
+ <script type="text/javascript" src="js/adminDeleteComments.js"></script>
 {include file='templates/footer.tpl'}

@@ -1,5 +1,5 @@
 <?php
-require_once "api/Model/CommentModel.php";
+require_once "model/CommentModel.php";
 require_once "api/view/ApiView.php";
 require_once "model/UserModel.php";
 require_once "view/adminCommentView.php";
@@ -22,19 +22,20 @@ class commentController
         $this->userModel = new UserModel();
     }
 
-    function getAll(){
+    function getAll()
+    {
         try {
-                $comments = $this->commentModel->getComments();
-                $this->adminCommentView->showAll($comments);
-            
+            $comments = $this->commentModel->getComments();
+            $this->apiView->response($comments, 200);
         } catch (Exception $e) {
-            $this->apiView->response(null, 500); //seria a esta vista?? 
+            $this->apiView->response(null, 500);  
         }
     }
 
     function getCommentsByProductId($params = [])
     {
-        try {
+        
+        try { 
             if (!empty($params)) {
 
                 $comments = $this->commentModel->getCommentsByProductId($params[":ID"]);
@@ -47,34 +48,48 @@ class commentController
 
     function addComment($params = [])
     {
-        try {   
-             
-                    session_start();
-                    if(isset($_SESSION['email']) && !empty($_SESSION['email']) ){
-                        if($_SESSION['role']==2 || $_SESSION['role']==1){
-                             $email = $_SESSION['email'];
-                             $user = $this->userModel->get($email);                
-                            $comment = json_decode($this->data);
-                            if($comment->comment!=null || $comment->comment!=''){
-                                $id =  $this->commentModel->add($comment->comment, $comment->punctuation, $comment->productId, $user->id_user);
-                                $newComment = $this->commentModel->get($id);
-                                $this->apiView->response($newComment, 200);
-                            }else{
-                                $this->apiView->response(null, 404);
-                            }
-
-                        }else
-                            $this->apiView->response(null, 401);
-                        
-                    }else
+        try {
+            session_start();
+            if (isset($_SESSION['email']) && !empty($_SESSION['email'])) {
+                if ($_SESSION['role'] == 2 || $_SESSION['role'] == 1) {
+                    $email = $_SESSION['email'];
+                    $user = $this->userModel->get($email);
+                    $comment = json_decode($this->data);
+                    if ($comment->comment != null || $comment->comment != '') {
+                        $id =  $this->commentModel->add($comment->comment, $comment->punctuation, $comment->productId, $user->id_user);
+                        $newComment = $this->commentModel->get($id);
+                        $this->apiView->response($newComment, 200);
+                    } else {
                         $this->apiView->response(null, 404);
-              
+                    }
+                } else
+                    $this->apiView->response(null, 401);
+            } else
+                $this->apiView->response(null, 404);
         } catch (Exception $e) {
             $this->apiView->response(null, 500);
         }
     }
 
-    function deleteComment($params = []){
-        echo('hola');
+    function deleteComment($params = [])
+    {
+        try {
+            if (!empty($params)) {
+                $this->commentModel->delete($params[":ID"]);
+                $this->apiView->response(null, 200);
+            } else
+                $this->apiView->response(null, 404);
+        } catch (Exception $e) {
+            $this->apiView->response(null, 500);
+        }
+        
+    }
+
+    function getFilteredComments($params = [] ){
+     
+     echo $params["SORT"];
+     die();
+     
+        
     }
 }

@@ -5,11 +5,12 @@ define('BASE_URL', '//' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'
 require_once 'controller/ProductController.php';
 require_once 'controller/BrandController.php';
 require_once 'controller/UserController.php';
+require_once 'controller/CommentController.php';
 
 $productController = new ProductController();
 $brandController = new BrandController();
 $userController = new UserController();
-
+$commentController = new CommentController();
 
 
 if (!empty($_GET['action'])) {
@@ -72,6 +73,9 @@ switch ($params[0]) {
         break;
     case 'deleteUser':
         $userController->delete($params[1]);
+        break;
+    case 'adminComments':
+        $commentController->showComments();
         break;
     default:
     break;

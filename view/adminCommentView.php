@@ -9,8 +9,7 @@ class adminCommentView{
         $this->smarty= new Smarty();
     }
 
-    function showAll($comments){
-        $this->smarty->assign('comments',$comments);  
+    function showAll(){       
         $this->smarty->display('templates/adminComments.tpl');
     }
 }

@@ -19,18 +19,25 @@
       <p> {$product->description}</p>
    </div>
 
-   <div class="price">
+   <div class="price" >
       <h3 class="especificationView">Precio: </h3>
       <p> ${$product->price}</p>
    </div> 
 
-   <div class="cart">
+   <div class="{if $smarty.session.role == 0} hide {else} cart {/if}">
       <a href="home" class="btn btn-primary"><i class="bi bi-search"></i> Seguir comprando </a>
    </div>
    
    <div class="comment-container">     
       <div class="comment-title">
          <h4 class="productTitle" >Comentarios del producto</h4>
+      </div>
+      <div>
+           <select id="sort" name="filter">
+            <option value="All">mostrar todos</option>  
+               <option value="date asc" >comentarios antiguos</option>               
+            </select>
+        
       </div>
       <div class="comment-area">
       </div>     
