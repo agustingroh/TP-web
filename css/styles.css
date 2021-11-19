@@ -204,16 +204,19 @@ h1,h2{
     grid-template-rows: auto ;
     grid-template-areas: "product product cart"
                         "image description description"
-                        "image  brand price";
+                        "image  brand price"
+                        "comment comment new-comment ";
 
     margin: 30px;
 }
 .product { grid-area: product; }
 .brand { grid-area: brand; }
 .price { grid-area: price; }
-.image { grid-area: image; }
+.product-image { grid-area: image; }
 .description {grid-area: description;}
 .cart {grid-area: cart;}
+.comment-container {grid-area: comment;}
+.new-comment-container {grid-area: new-comment;}
 
 .back{
     padding: 20px;
@@ -244,7 +247,7 @@ p{
     background-position: 40% 1%;
 }
 
-.registration-label{
+.registration-label {
     color:white;
 }
 
@@ -310,4 +313,66 @@ p{
 
 .user-message{
     color:#ffe301;
+}
+
+.comment-title{
+    background-color: #343a40;
+    text-align: center;
+}
+
+.productTitle{    
+    color: white;
+}
+
+.comment-container{
+    margin-top: 8px;
+    background-color: white;
+    display: flex;
+    flex-flow: column;
+}
+
+.comment-division{
+    background-color: rgb(190, 187, 187);
+    box-shadow: 3px -2px teal;
+}
+
+.comment-area{
+    max-height: 250px;
+    width: 100%;
+    margin-top: 3px;
+    overflow:scroll;
+   
+}
+
+.comment{
+    color: black;
+    font-size: 13px;
+}
+
+.punctuation{
+    background-color: grey;
+}
+
+.highlighted{
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.new-comment-container{
+    margin-left: 5px;
+}
+
+
+#comment-form{
+    background-color: #343a40;
+    margin-top: 8px;
+}
+
+textarea{
+    margin-bottom: 5px;
+}
+
+.punctuation-text{
+   color:  #007bff;
+   font-weight: bold;
 }
