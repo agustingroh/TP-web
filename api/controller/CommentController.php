@@ -39,7 +39,7 @@ class commentController
         try {   
              
                     session_start();
-                    if(isset($_SESSION['email']) && empty($_SESSION['email'])){
+                    if(isset($_SESSION['email']) && !empty($_SESSION['email'])){
                         if($_SESSION['role']==2 || $_SESSION['role']==1){
                              $email = $_SESSION['email'];
                              $user = $this->userModel->get($email);                
