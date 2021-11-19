@@ -5,7 +5,7 @@
 <div class="specificationsContainer">
    <h1 class="product"> {$product->component}</h1>
 
-   <div class="image">
+   <div class="product-image">
    <img class="style-image" src = "img/no-pic.png">
   </div>
 
@@ -27,8 +27,23 @@
    <div class="cart">
       <a href="home" class="btn btn-primary"><i class="bi bi-search"></i> Seguir comprando </a>
    </div>
+   
+    <div class="comment-container">
+     
+         <div class="comment-title">
+            <h4 class="productTitle" >Comentarios del producto</h4>
+         </div>
+         <div class="comment-area">
+         </div>
+     
+    </div>
+
+    
 </div>
 
 
+
+
+ <script type="text/javascript" src="js/comment.js"></script>
 
 {include file='templates/footer.tpl'}

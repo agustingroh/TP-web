@@ -1,20 +1,18 @@
 <?php
     require_once('lib/Router/Route.php');
+    require_once('api/controller/CommentController.php');
+      
 
-    var_dump("ACA");
-   // require_once('./api/task.api.controller.php');
-    
-    // CONSTANTES PARA RUTEO
     define("BASE_URL", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/');
 
     $router = new Router();
 
     // rutas
-    // $router->addRoute("/tareas", "GET", "TaskApiController", "getTasks");
+     $router->addRoute("/comment/:ID", "GET", "CommentController", "getCommentsByProductId");
     // $router->addRoute("/tareas/:ID", "GET", "TaskApiController", "getTask");
     // $router->addRoute("/tareas/:ID", "DELETE", "TaskApiController", "deleteTask");
     // $router->addRoute("/tareas", "POST", "TaskApiController", "addTask");
     // $router->addRoute("/tareas/:ID", "PUT", "TaskApiController", "updateTask");
 
     //run
-    // $router->route($_GET['resource'], $_SERVER['REQUEST_METHOD']); 
+     $router->route($_GET['resource'], $_SERVER['REQUEST_METHOD']); 
