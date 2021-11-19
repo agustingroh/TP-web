@@ -363,3 +363,16 @@ p{
 }
 
 
+#comment-form{
+    background-color: #343a40;
+    margin-top: 8px;
+}
+
+textarea{
+    margin-bottom: 5px;
+}
+
+.punctuation-text{
+   color:  #007bff;
+   font-weight: bold;
+}

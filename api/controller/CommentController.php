@@ -39,14 +39,19 @@ class commentController
         try {   
              
                     session_start();
-                    if(isset($_SESSION['email']) && !empty($_SESSION['email'])){
+                    if(isset($_SESSION['email']) && !empty($_SESSION['email']) ){
                         if($_SESSION['role']==2 || $_SESSION['role']==1){
                              $email = $_SESSION['email'];
                              $user = $this->userModel->get($email);                
                             $comment = json_decode($this->data);
-                            $id =  $this->commentModel->add($comment->comment, $comment->punctuation, $comment->productId, $user->id_user);
-                            $newComment = $this->commentModel->get($id);
-                            $this->apiView->response($newComment, 200);
+                            if($comment->comment!=null || $comment->comment!=''){
+                                $id =  $this->commentModel->add($comment->comment, $comment->punctuation, $comment->productId, $user->id_user);
+                                $newComment = $this->commentModel->get($id);
+                                $this->apiView->response($newComment, 200);
+                            }else{
+                                $this->apiView->response(null, 404);
+                            }
+
                         }else
                             $this->apiView->response(null, 401);
                         
