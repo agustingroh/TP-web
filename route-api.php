@@ -9,9 +9,9 @@
 
     // rutas
      $router->addRoute("/comment/:ID", "GET", "CommentController", "getCommentsByProductId");
-     $router->addRoute("/comment", "POST", "CommentController", "addComment");
+    
     // $router->addRoute("/tareas/:ID", "DELETE", "TaskApiController", "deleteTask");
-    // $router->addRoute("/tareas", "POST", "TaskApiController", "addTask");
+     $router->addRoute("/comment", "POST", "CommentController", "addComment");
     // $router->addRoute("/tareas/:ID", "PUT", "TaskApiController", "updateTask");
 
     //run

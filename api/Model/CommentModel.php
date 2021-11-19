@@ -14,4 +14,16 @@ class CommentModel {
      return $stmt->fetchAll(PDO::FETCH_OBJ);
 
  }
+
+ function add($comment,$punctuation,$productId,$userId){
+     $stmt= $this->db->prepare("INSERT INTO Comment(comment, punctuation, id_product, id_user) VALUES(?,?,?,?)");
+     $stmt->execute(array($comment, $punctuation, $productId,$userId));
+     return $this->db->lastInsertId();
+ }
+
+ function get($id){
+        $stmt=$this->db->prepare("SELECT * FROM Comment WHERE id_comment=?");
+        $stmt->execute(array($id));
+        return $stmt->fetch(PDO::FETCH_OBJ);
+ }
  }

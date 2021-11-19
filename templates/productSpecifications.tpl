@@ -38,14 +38,15 @@
 
     <div class="new-comment-container">
       <form  id="comment-form" action="api/comment" method="POST">
-         <input id="user-comment" name="comment"  placeholder="Escriba su comentario del producto...">
-         <select id="user-punctuation" name="puctuation">
-            <option value="1" default=1 >1</option>
+     <label> Deje su comentario <textarea  cols = "50" id = "user-comment">            
+         </textarea></label>
+        <label>Calificacion del producto <select id="user-punctuation" name="puctuation">
+            <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
             <option value="4">4</option>
-            <option value="5">5</option>
-         </select>
+            <option value="5"  selected="selected" >5</option>
+         </select></label>
       <button type="submit">Enviar comentario</button>
       </form>
     
