@@ -2,6 +2,7 @@
 require_once "api/Model/CommentModel.php";
 require_once "api/view/ApiView.php";
 require_once "model/UserModel.php";
+require_once "view/adminCommentView.php";
 
 class commentController
 {
@@ -10,19 +11,29 @@ class commentController
     private $commentModel;
     private $data;
     private $userModel;
+    private $adminCommentView;
 
     function __construct()
     {
         $this->commentModel = new CommentModel();
+        $this->adminCommentView = new adminCommentView();
         $this->apiView = new ApiView();
         $this->data = file_get_contents("php://input");
         $this->userModel = new UserModel();
     }
 
+    function getAll(){
+        try {
+                $comments = $this->commentModel->getComments();
+                $this->adminCommentView->showAll($comments);
+            
+        } catch (Exception $e) {
+            $this->apiView->response(null, 500); //seria a esta vista?? 
+        }
+    }
 
     function getCommentsByProductId($params = [])
     {
-
         try {
             if (!empty($params)) {
 
@@ -61,5 +72,9 @@ class commentController
         } catch (Exception $e) {
             $this->apiView->response(null, 500);
         }
+    }
+
+    function deleteComment($params = []){
+        echo('hola');
     }
 }

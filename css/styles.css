@@ -376,3 +376,8 @@ textarea{
    color:  #007bff;
    font-weight: bold;
 }
+
+.verComentarios{
+    display: flex;
+    justify-content: center;
+}
