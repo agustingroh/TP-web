@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Oct 14, 2021 at 11:15 PM
+-- Generation Time: Nov 19, 2021 at 11:30 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -48,6 +48,32 @@ INSERT INTO `Brand` (`id_brand`, `brand_name`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `Comment`
+--
+
+CREATE TABLE `Comment` (
+  `id_comment` int(11) NOT NULL,
+  `comment` varchar(1024) NOT NULL,
+  `punctuation` int(11) NOT NULL,
+  `id_product` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `Comment`
+--
+
+INSERT INTO `Comment` (`id_comment`, `comment`, `punctuation`, `id_product`, `id_user`) VALUES
+(1, 'TEST', 5, 60, 3),
+(2, 'Excelente calidad', 4, 60, 3),
+(3, 'aasas', 5, 61, 3),
+(4, '            \n         sadsad', 1, 68, 3),
+(5, '            \n         ', 1, 68, 1),
+(6, '            \n         sdasdasd', 1, 68, 1);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `Product`
 --
 
@@ -64,10 +90,6 @@ CREATE TABLE `Product` (
 --
 
 INSERT INTO `Product` (`id_product`, `component`, `description`, `price`, `id_brand`) VALUES
-(43, 'mouse', '8000', 12, NULL),
-(44, 'mouse', '5000', 46, NULL),
-(45, 'mouse', '5000', 46, NULL),
-(51, 'mouse', 'n/a', 900, NULL),
 (60, 'mouse', 'n/a', 1500, 121),
 (61, 'monitor 24\'\'', 'Un monitor a tu medida\r\nCon tu pantalla LED no solo ahorrás energía, ya que su consumo es bajo, sino que vas a ver colores nítidos y definidos en tus películas o series favoritas.', 28000, 127),
 (62, 'monitor 18.5\"', 'El compromiso que define a Philips es brindar a sus usuarios nuevas y evolucionadas tecnologías. Es por ello que cuida los detalles de cada uno de sus productos para hacer la diferencia. Gozá de una experiencia única con este monitor que te ofrece gran calidad e innovación en uno solo.', 18000, 128),
@@ -100,7 +122,6 @@ INSERT INTO `User` (`id_user`, `email`, `password`, `role`) VALUES
 (2, 'arielarrillagagm@gmail.com', '$2y$10$BeMlSFjyaQu0YWwhmXViNe93Ko7.ps6gPPh2U3AB0f5Umhsl.eQC.', 1),
 (3, 'user@gmail.com', '$2y$10$x2eBxzBGSG3xGKhmhhKHm.F8uDxuKss2O4IQZWYsglmz8BrxIDNee', 2),
 (6, 'test@gmail.com', '$2y$10$aQ5d1ww2m/n22pIsiPijXeFwgbWYwZQOyQU/6Z4mMX6JEqca7y5dy', 2),
-(43, 'usuario1234@gmail.com', '$2y$10$CdijenxENdSvCzy05M8z.OCuRfOe8RsfwnvDso0fQBtMNQ/pu9KFy', 2),
 (44, 'admin@gmail.com', '$2y$10$F8aklP1cTFGHFcpb/rPINevy27SSqR6xrBUS4rrtoycpRMWaS0L26', 1);
 
 --
@@ -113,6 +134,14 @@ INSERT INTO `User` (`id_user`, `email`, `password`, `role`) VALUES
 ALTER TABLE `Brand`
   ADD PRIMARY KEY (`id_brand`),
   ADD UNIQUE KEY `brand_name` (`brand_name`);
+
+--
+-- Indexes for table `Comment`
+--
+ALTER TABLE `Comment`
+  ADD PRIMARY KEY (`id_comment`),
+  ADD KEY `idProduct` (`id_product`) USING BTREE,
+  ADD KEY `idUser` (`id_user`);
 
 --
 -- Indexes for table `Product`
@@ -136,7 +165,13 @@ ALTER TABLE `User`
 -- AUTO_INCREMENT for table `Brand`
 --
 ALTER TABLE `Brand`
-  MODIFY `id_brand` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=132;
+  MODIFY `id_brand` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=133;
+
+--
+-- AUTO_INCREMENT for table `Comment`
+--
+ALTER TABLE `Comment`
+  MODIFY `id_comment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `Product`
@@ -148,11 +183,18 @@ ALTER TABLE `Product`
 -- AUTO_INCREMENT for table `User`
 --
 ALTER TABLE `User`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `Comment`
+--
+ALTER TABLE `Comment`
+  ADD CONSTRAINT `Comment_ibfk_2` FOREIGN KEY (`id_product`) REFERENCES `Product` (`id_product`) ON DELETE CASCADE,
+  ADD CONSTRAINT `Comment_ibfk_3` FOREIGN KEY (`id_user`) REFERENCES `User` (`id_user`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `Product`
