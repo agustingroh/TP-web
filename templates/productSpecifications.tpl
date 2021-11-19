@@ -43,11 +43,11 @@
          <div>
             <label class="punctuation-text">Calificacion del producto </label>
                <select id="user-punctuation" name="puctuation">
-                  <option value="5" selected="selected" >Excelente</option>
-                   <option value="4">Muy bueno</option>
-                    <option value="3">Bueno</option>
-                     <option value="2">Regular</option>
-                  <option value="1">Malo</option>          
+                  <option  value="5" selected="selected" >Excelente</option>
+                   <option  value="4">Muy bueno</option>
+                    <option  value="3">Bueno</option>
+                     <option  value="2">Regular</option>
+                  <option  value="1">Malo</option>          
             </select>
         
          </div>
