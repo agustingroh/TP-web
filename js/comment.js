@@ -25,20 +25,47 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
     function view(comments) {    
 
-        let commmentContainner = document.querySelector(".comment-area");
-        commmentContainner.innerHTML = "";
+        let commentContainner = document.querySelector(".comment-area");
+        commentContainner.innerHTML = "";
         comments.forEach(comment => {
-            commmentContainner.innerHTML += `
+            commentContainner.innerHTML += `
            <div class="comment-division">
-           <div class="punctuation">
-             <p class="comment"> Puntuacion: <span class="highlighted">${comment.punctuation}</span></p>
-           </div>         
-            <p class="comment"> Commentario: 
-            ${comment.comment}</p>
-           </div>`;
+                <div class="punctuation">
+                    <p class="comment"> Puntuacion: <span class="highlighted">${comment.punctuation}</span></p>
+                </div>         
+            <p class="comment"> Comentario: ${comment.comment}</p>
+            <div>
+                <button class="delete-brand btn btn-danger" id='deleteComment'><i class="bi bi-trash"></i>Borrar
+            </div>
+            </div>`;
 
         });
     }
+
+    //document.querySelector("#deleteComment").addEventListener("click", prueba());
+
+    // function prueba(){
+    //     console.log('prueba');
+    // }
+
+    // async function deleteComment(id_comment) {
+
+    //     try {
+    //         const success = await fetch(`${URL}/${id_comment}`, {
+    //             method: 'DELETE',
+    //             headers: {
+    //                 'Content-Type': 'application/json',
+    //                 'Accept': 'application/json'
+    //             },
+            
+    //         });
+    //         if (success) {
+    //             getData();
+    //         }
+    //     } catch (error) {
+    //         console.log(error);
+    //     }
+    // }
 
     // TO DO GET FORM DATA 
     function getCommentData() {

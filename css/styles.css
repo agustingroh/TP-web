@@ -377,3 +377,7 @@ textarea{
    font-weight: bold;
 }
 
+.verComentarios{
+    display: flex;
+    justify-content: center;
+}
