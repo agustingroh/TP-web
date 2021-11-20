@@ -57,8 +57,13 @@ class ProductController
     public function newProduct()
     {
         try {
-            if (isset($_POST['product']) && (isset($_POST['price'])) && (isset($_POST['description'])) && (isset($_POST['brand'])) && !empty($_POST['description']) && !empty($_POST['price']) && !empty($_POST['product'])) {
-                $this->productModel->add($_POST['description'], $_POST['brand'], $_POST['price'], $_POST['product']);
+            if (isset($_POST['product']) && (isset($_POST['price'])) && (isset($_POST['description'])) && (isset($_POST['brand'])) && !empty($_POST['description']) && !empty($_POST['price']) && !empty($_POST['product'])&&($_FILES['image']['type'] == "image/jpg" || $_FILES['image']['type'] == "image/jpeg" || $_FILES['image']['type'] == "image/png")) {
+                
+                $filePath = "public/upload/" . uniqid("", true) . "." . strtolower(pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION));            
+                move_uploaded_file($_FILES['image']['tmp_name'], $filePath);
+
+                $this->productModel->add($_POST['description'], $_POST['brand'], $_POST['price'], $_POST['product'], $filePath);
+                
                 header("Location: ".BASE_URL  . "admins");
             } else {
                 $this->adminView->showMessage("Completa todos los campos", 400);
@@ -72,8 +77,13 @@ class ProductController
     public function edit()
     {
         try {
-            if (isset($_POST['product']) && (isset($_POST['price'])) && (isset($_POST['description'])) && (isset($_POST['brand'])) && !empty($_POST['description']) && !empty($_POST['price']) && !empty($_POST['product'])) {
-                $this->productModel->edit($_POST['id'], $_POST['product'], $_POST['description'], $_POST['brand'], $_POST['price']);
+            if (isset($_POST['product']) && (isset($_POST['price'])) && (isset($_POST['description'])) && (isset($_POST['brand'])) && !empty($_POST['description']) && !empty($_POST['price']) && !empty($_POST['product'])&&($_FILES['image']['type'] == "image/jpg" || $_FILES['image']['type'] == "image/jpeg" || $_FILES['image']['type'] == "image/png")) {
+                
+                $filePath = "public/upload/" . uniqid("", true) . "." . strtolower(pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION));            
+                move_uploaded_file($_FILES['image']['tmp_name'], $filePath);
+                //lo tengo que volver a hacer?? puede que lo que se tenga que editar sea el nombre nomas, y esto me crearia una nuevaimg, o no??
+                
+                $this->productModel->edit($_POST['id'], $_POST['product'], $_POST['description'], $_POST['brand'], $_POST['price'], $filePath);
                 header("Location: ".BASE_URL  . "admins");
                 die();
             } else $this->adminView->showMessage("Algo ha salido mal", 400);

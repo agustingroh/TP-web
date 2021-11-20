@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
   document.querySelectorAll(".edit-product").forEach(btn => {
     btn.addEventListener("click", () => {
-      getProductData(btn.dataset.update, btn.dataset.description, btn.dataset.component, btn.dataset.price, btn.dataset.idbrand); //btn.dataset.description solo guarda la primer palabra
+      getProductData(btn.dataset.update, btn.dataset.description, btn.dataset.component, btn.dataset.price, btn.dataset.idbrand); 
     });
   });
 
@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
     document.querySelector("#product").value = component;
     document.querySelector("#price").value = price;
     document.querySelector("#brand").value = idBrand;
-    document.querySelector("#description").value = description;  
+    document.querySelector("#description").value = description; 
     document.querySelector("#idit-product-button").value=id;
   
   }
