@@ -7,12 +7,12 @@
 
     $router = new Router();
 
-    // rutas
-     $router->addRoute("/comment/:ID", "GET", "CommentController", "getCommentsByProductId");
-    
-    // $router->addRoute("/tareas/:ID", "DELETE", "TaskApiController", "deleteTask");
-     $router->addRoute("/comment", "POST", "CommentController", "addComment");
-    // $router->addRoute("/tareas/:ID", "PUT", "TaskApiController", "updateTask");
+    // routes
+    $router->addRoute("/comment/:ID", "GET", "CommentController", "getCommentsByProductId");  
+    $router->addRoute("/comment/:ID", "DELETE", "CommentController", "deleteComment");    
+    $router->addRoute("/comment", "POST", "CommentController", "addComment");
+    $router->addRoute("/comment", "GET", "CommentController", "getAll");
+ $router->addRoute("/comment/:ID/:SORT/:ORDER", "GET", "CommentController", "getFilteredComments");
 
     //run
      $router->route($_GET['resource'], $_SERVER['REQUEST_METHOD']); 

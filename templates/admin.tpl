@@ -226,7 +226,10 @@
                 </tbody>
             </table>
        </div> 
-    </div>  
+    </div>
+    <div class="verComentarios">
+        <a class="btn btn-warning" href='api/comment'>Ver comentarios de productos</a>
+    </div>
 </div>
 
 
