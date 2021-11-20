@@ -77,8 +77,7 @@
          <div>
             <button  class = "btn btn-success" type="submit">Enviar comentario</button>
          </div>
-      </form>
-    
+      </form>    
    </div>
 
     
@@ -86,5 +85,8 @@
 
 
 <script type="text/javascript" src="js/comment.js"></script>
+
+
+ <script type="text/javascript" src="js/comment.js"></script>
 
 {include file='templates/footer.tpl'}
