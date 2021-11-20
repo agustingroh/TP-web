@@ -25,8 +25,10 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
 
     async function getData() {
+
         try {
             var productId = +window.location.href.split("/")[5];
+            console.log(productId);
             const response = await fetch(`${URL}/${productId}`);
             if (response.ok) {
                 const comments = await response.json();

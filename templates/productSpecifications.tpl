@@ -6,7 +6,8 @@
    <h1 class="product"> {$product->component}</h1>
 
    <div class="product-image">
-   <img class="style-image" src = "img/no-pic.png">
+
+   <img class="style-image"  src= {($product->filePath) ? $product->filePath  : 'img/no-pic.png'}>
   </div>
 
    <div class="brand">
