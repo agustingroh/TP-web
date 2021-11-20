@@ -81,7 +81,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
             commentContainner.innerHTML += `
            <div class="comment-division">
                 <div class="punctuation">
-                    <p class="comment"> Puntuacion: <span class="highlighted">${comment.punctuation}</span><span>&nbsp&nbsp ${comment.date}</span></p>
+                    <p class="comment"> Puntuacion: <span class="${getCommentStatus(comment.punctuation).class}">${getCommentStatus(comment.punctuation).status}</span><span>&nbsp&nbsp ${comment.date}</span></p>
                 </div>         
             <p class="comment"> Comentario: ${comment.comment}</p>            
             </div>`;
@@ -140,6 +140,26 @@ document.addEventListener("DOMContentLoaded", function (e) {
         }
     }
 
+   
 
+    function getCommentStatus(punctuation){
+        const status =  {
+            5: { status: "Excelente",
+                class: "excelent"
+            },  
+            4: { status: "Muy bueno",
+                class: "really-good"
+            },
+            3: { status: "Bueno",
+                class: "good"},
+            
+            2: { status: "Regular",
+                class: "regular"},
+            
+            1: { status: "Malo",
+                class: "bad"}
+        }
+        return status[punctuation];
+    }
 
 });
