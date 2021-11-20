@@ -178,7 +178,7 @@ class ProductController
                 $limit = $limit? $limit : 5;                       
                 $offset = ($limit * $page) - $limit;
                 $productCount = $this->productModel->getCount();                
-                $products =  $this->productModel->getAll($limit,$offset);                
+                $products =  $this->productModel->getAllPagination($limit,$offset);                
             }
             else
                 $products = $this->productModel->getAllProductsByBrandId($params);           

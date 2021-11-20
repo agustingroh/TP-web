@@ -35,11 +35,17 @@
             {/foreach}
          </tbody>
       </table>
-      <p>{$count}</p>
-      {for $int=1 to {($count/5)|ceil}}
-             <a href="home/allbrands/5/{$int}">{$int}</a>    
-      {/for}
 
+   <div class="pagination-container">
+      <nav aria-label="Page navigation example">
+         <ul class="pagination">
+            {for $page=1 to {($count/5)|ceil}}          
+               <li class="page-item"><a class="page-link" href="home/allbrands/5/{$page}">{$page}</a></li> 
+            {/for}   
+         </ul>
+      </nav>
+   </div>
+     
    </div>
 
 <div>

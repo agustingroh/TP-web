@@ -10,8 +10,17 @@ class ProductModel
         $this->db = new PDO('mysql:host=localhost;dbname=tpweb;charset=utf8', 'root', '');
     }
 
-    public function getAll($limit,$offset)
+    public function getAll()
     {
+        $stmt = $this->db->prepare("SELECT p.id_product,p.component,p.description,p.price,b.brand_name,b.id_brand FROM Product p
+        INNER JOIN Brand b ON b.id_brand=p.id_brand ORDER BY p.component ");
+        $stmt->execute();
+        $products = $stmt->fetchAll(PDO::FETCH_OBJ);          
+        return $products;
+    }
+
+    public function getAllPagination($limit,$offset)
+    { 
         $stmt = $this->db->prepare("SELECT p.id_product,p.component,p.description,p.price,b.brand_name,b.id_brand FROM Product p
         INNER JOIN Brand b ON b.id_brand=p.id_brand ORDER BY p.component LIMIT $limit OFFSET $offset");
         $stmt->execute();
