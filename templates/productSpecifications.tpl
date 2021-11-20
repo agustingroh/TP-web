@@ -61,7 +61,7 @@
    </div>
 
    <div class="new-comment-container" >
-      <form class="{if $smarty.session.role !=0  } show {else} hide {/if}" id="comment-form" action="api/comment" method="POST">      
+      <form id="comment-form" class="{if $smarty.session.role !=0  } show {else} hide {/if}"  >      
          <h4 class='productTitle'>Deje su comentario</h4>      
          <textarea cols = "50" id = "user-comment"></textarea>
          <div>
@@ -75,7 +75,7 @@
             </select>        
          </div>
          <div>
-            <button  class = "btn btn-success" type="submit">Enviar comentario</button>
+            <button class = "btn btn-success" type="submit">Enviar comentario</button>
          </div>
       </form>    
    </div>
@@ -84,7 +84,7 @@
 </div>
 
 
-<script type="text/javascript" src="js/comment.js"></script>
+
 
 
  <script type="text/javascript" src="js/comment.js"></script>

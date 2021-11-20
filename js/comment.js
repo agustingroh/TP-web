@@ -3,18 +3,23 @@ document.addEventListener("DOMContentLoaded", function (e) {
     "use_strict";
 
     const URL = "http://localhost/tp/api/comment";
+    let count = 0;
+
+    getData();
 
     document.querySelector("#sort").addEventListener("change", (e) => {
+
         getSortData(e.target.value);
     });
 
     document.querySelector("#comment-form").addEventListener("submit", (e) => {
-        e.preventDefault();
-        let data = getCommentData();
+        e.preventDefault();        
+        let data = getCommentData();         
         postComment(data);
+        
     });
 
-    getData();
+    
     async function getData() {
         try {
             var productId = +window.location.href.split("/")[5];
@@ -81,18 +86,17 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
     }
 
-    async function postComment(data) {
-        var productId = +window.location.href.split("/")[5];
-        const response = await fetch(`${URL}/${productId}`, {
-            method: "POST",
-            body: JSON.stringify(data),
+    async function postComment(data) {       
+        const response = await fetch(URL, {
+            method: 'POST',
             headers: {
-                "Content-Type": "application/json"
-            }
-        });
-        if (response.ok) {
-            const comments = await response.json();
-            view(comments);
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });  
+        if (response.ok) {          
+            getData();
         } else {
             console.log("error");
         }
@@ -105,8 +109,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
         let data = {};
         data.comment = comment;
         data.punctuation = punctuation;
-        data.productId = +window.location.href.split("/")[5];
-
+        data.productId = +window.location.href.split("/")[5];       
         return data;
     }
 
