@@ -18,7 +18,7 @@ class ProductModel
         $products = $stmt->fetchAll(PDO::FETCH_OBJ);          
         return $products;
     }
-        // en getallbyid y getall agregamos las img??
+    
     public function getAllProductsByBrandId($id){  
         $stmt = $this->db->prepare("SELECT p.id_product,p.component,p.description,p.price,b.brand_name,b.id_brand FROM Product p
         INNER JOIN Brand b ON b.id_brand=p.id_brand WHERE b.id_brand=? ORDER BY p.component");

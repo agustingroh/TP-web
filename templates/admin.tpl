@@ -27,6 +27,7 @@
                             <button type="button" class="edit-product  btn btn-warning" data-price={$product->price} 
                             data-description="{$product->description }"
                             data-idbrand={$product->id_brand} data-component="{$product->component}" data-update={$product->id_product}><i class="bi bi-pencil"></i> Editar</button>
+                         <a class="delete-imagen btn btn-danger" href="deleteImageProduct/{$product->id_product}"><i class="bi bi-trash"></i> Borrar imagen</a> 
                         </td>
                     </tr>   
                     {/foreach}    
