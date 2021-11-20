@@ -28,19 +28,18 @@ class commentController
             $comments = $this->commentModel->getComments();
             $this->apiView->response($comments, 200);
         } catch (Exception $e) {
-            $this->apiView->response(null, 500);  
+            $this->apiView->response(null, 500);
         }
     }
 
     function getCommentsByProductId($params = [])
-    {        
-        try { 
+    {
+        try {
             if (!empty($params) && isset($params[':ID'])) {
 
                 $comments = $this->commentModel->getCommentsByProductId($params[":ID"]);
                 $this->apiView->response($comments, 200);
-            }
-            else
+            } else
                 $this->apiView->response(null, 404);
         } catch (Exception $e) {
             $this->apiView->response(null, 500);
@@ -76,53 +75,60 @@ class commentController
     {
         try {
             session_start();
-            if($_SESSION['role']==1){
+            if ($_SESSION['role'] == 1) {
                 if (!empty($params) && isset($params[":ID"])) {
                     $this->commentModel->delete($params[":ID"]);
                     $this->apiView->response(null, 200);
-                }else
-                    $this->apiView->response(null, 404);    
+                } else
+                    $this->apiView->response(null, 404);
             } else
                 $this->apiView->response(null, 401);
         } catch (Exception $e) {
             $this->apiView->response(null, 500);
         }
-        
     }
 
-    function getFilteredComments($params = [] ){
+    function getFilteredComments($params = [])
+    {
 
-        try{
-            if(!empty($params) && !empty($params[":ID"]) && !empty($params[":ORDER"]) && !empty($params[":SORT"] && isset($params[":SORT"]) && isset($params[":ORDER"]) && isset($params[":ID"]))){
-                $sort= '';
+        try {
+            if (!empty($params) && !empty($params[":ID"]) && !empty($params[":ORDER"]) && !empty($params[":SORT"] && isset($params[":SORT"]) && isset($params[":ORDER"]) && isset($params[":ID"]))) {
+                $sort = '';
                 $order = '';
-                if($params[":ORDER"] == 'asc')
+                if ($params[":ORDER"] == 'asc')
                     $order = 'ASC';
-                else if($params[":ORDER"] == 'desc')
+                else if ($params[":ORDER"] == 'desc')
                     $order = 'DESC';
                 else
                     $this->apiView->response(null, 404);
-            
-                if($params[":SORT"] == 'punctuation')
-                    $sort= 'punctuation';
-                else if($params[":SORT"] == 'date')
-                    $sort= 'date';
+
+                if ($params[":SORT"] == 'punctuation')
+                    $sort = 'punctuation';
+                else if ($params[":SORT"] == 'date')
+                    $sort = 'date';
                 else
-                    $this->apiView->response(null, 404);           
+                    $this->apiView->response(null, 404);
 
                 $comments = $this->commentModel->getFiltered($order, $sort, $params[":ID"]);
-                $this->apiView->response($comments, 200);          
-            }else{
+                $this->apiView->response($comments, 200);
+            } else {
                 $this->apiView->response(null, 404);
             }
-      
-        }catch(Exception $e){
+        } catch (Exception $e) {
             $this->apiView->response(null, 500);
+        }
     }
-       
-        
-  
-     
-        
+
+    function getCommentsByPunctuation($params = []){
+        try {
+            if (!empty($params) && !empty($params[":ID"]) && !empty($params[":SORT"]) && isset($params[":SORT"]) && isset($params[":ID"]) && isset($params)) {
+                $comments = $this->commentModel->getByPunctuation($params[":SORT"], $params[":ID"]);
+                $this->apiView->response($comments, 200);
+            } else {
+                $this->apiView->response(null, 404);
+            }
+        } catch (Exception $e) {
+            $this->apiView->response(null, 500);
+        }
     }
 }

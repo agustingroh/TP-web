@@ -12,23 +12,27 @@ document.addEventListener("DOMContentLoaded", function (e) {
         getSortData(e.target.value);
     });
 
-    document.querySelector("#comment-form").addEventListener("submit", (e) => {
-        e.preventDefault();        
-        let data = getCommentData();         
-        postComment(data);
-        
+    document.querySelector("#filter-punctuation").addEventListener("change", (e) => {
+        getCommentByPunctuation(e.target.value);
     });
 
-    
+    document.querySelector("#comment-form").addEventListener("submit", (e) => {
+        e.preventDefault();
+        let data = getCommentData();
+        postComment(data);
+
+    });
+
+
     async function getData() {
         try {
             var productId = +window.location.href.split("/")[5];
             const response = await fetch(`${URL}/${productId}`);
             if (response.ok) {
                 const comments = await response.json();
-                if(comments.length > 0) 
+                if (comments.length > 0)
                     view(comments);
-                else   
+                else
                     errorComment();
 
             } else {
@@ -40,26 +44,26 @@ document.addEventListener("DOMContentLoaded", function (e) {
     }
 
     async function getSortData(sort) {
-        try{
-        const params = sort.split(" ");
-        if (sort === "All")
-            getData();
-        else {
-            var productId = +window.location.href.split("/")[5];
-            const response = await fetch(`${URL}/${productId}/${params[0]}/${params[1]}`);
-            if (response.ok) {
-                const comments = await response.json();                
-                if(comments.length > 0)
-                    view(comments);
-                else
+        try {
+            const params = sort.split(" ");
+            if (sort === "All")
+                getData();
+            else {
+                var productId = +window.location.href.split("/")[5];
+                const response = await fetch(`${URL}/${productId}/${params[0]}/${params[1]}`);
+                if (response.ok) {
+                    const comments = await response.json();
+                    if (comments.length > 0)
+                        view(comments);
+                    else
+                        errorComment();
+                } else {
                     errorComment();
-            } else {
-               errorComment();
+                }
             }
+        } catch (error) {
+            errorComment();
         }
-    } catch (error) {
-        errorComment();
-    }
     }
 
     function errorComment() {
@@ -74,7 +78,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
         let commentContainner = document.querySelector(".comment-area");
         commentContainner.innerHTML = "";
         comments.forEach(comment => {
-        commentContainner.innerHTML += `
+            commentContainner.innerHTML += `
            <div class="comment-division">
                 <div class="punctuation">
                     <p class="comment"> Puntuacion: <span class="highlighted">${comment.punctuation}</span><span>&nbsp&nbsp ${comment.date}</span></p>
@@ -86,7 +90,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
     }
 
-    async function postComment(data) {       
+    async function postComment(data) {
         const response = await fetch(URL, {
             method: 'POST',
             headers: {
@@ -94,28 +98,47 @@ document.addEventListener("DOMContentLoaded", function (e) {
                 'Accept': 'application/json'
             },
             body: JSON.stringify(data)
-        });  
-        if (response.ok) {          
+        });
+        if (response.ok) {
             getData();
         } else {
             console.log("error");
         }
     }
 
-   
+
     function getCommentData() {
         let comment = document.querySelector("#user-comment").value;
         let punctuation = document.querySelector("#user-punctuation").value;
         let data = {};
         data.comment = comment;
         data.punctuation = punctuation;
-        data.productId = +window.location.href.split("/")[5];       
+        data.productId = +window.location.href.split("/")[5];
         return data;
     }
 
- 
 
-
+    async function getCommentByPunctuation(punctuation) {
+        try {
+            if (punctuation === "All")
+                getData();
+            else {
+                const productId = +window.location.href.split("/")[5];
+                const response = await fetch(`${URL}/${productId}/${punctuation}`);
+                console.log(response);
+                if (response.ok) {
+                    const comments = await response.json();
+                    console.log(comments);
+                    if (comments.length > 0)
+                        view(comments);
+                    else
+                        errorComment();
+                }
+            }
+        } catch (error) {
+            errorComment();
+        }
+    }
 
 
 
