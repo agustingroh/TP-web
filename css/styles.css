@@ -332,7 +332,7 @@ p{
 }
 
 .comment-division{
-    background-color: rgb(190, 187, 187);
+    background-color: rgb(233 233 233);
     box-shadow: 3px -2px teal;
 }
 
@@ -350,7 +350,7 @@ p{
 }
 
 .punctuation{
-    background-color: grey;
+    background-color: #c8c8c8;
 }
 
 .highlighted{
@@ -404,4 +404,32 @@ textarea{
 
 #sort{
     margin-right: 3px;
+}
+
+.excelent, .really-good, .good , .regular , .bad{
+    font-weight: bold;
+    font-size: 14px;
+    text-shadow: 0.0px 0px 0.6px rgb(0, 0, 0);
+}
+
+.excelent{
+    color: rgb(0, 124, 0);
+    
+}
+
+.really-good{
+    color: #064372;
+}
+
+.good{
+    color: yellow;
+ 
+}
+
+.regular{
+    color: orange;
+}
+
+.bad{
+    color: red;
 }

@@ -51,5 +51,11 @@ class CommentModel
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
+
+    function getByPunctuation($punctuation, $idProduct){
+        $stmt = $this->db->prepare("SELECT id_comment,comment,date,punctuation FROM Comment WHERE id_product=? AND punctuation=?");
+        $stmt->execute(array($idProduct,$punctuation));           
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
+    }
     
 }
