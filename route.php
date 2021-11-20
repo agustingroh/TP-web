@@ -77,6 +77,9 @@ switch ($params[0]) {
     case 'adminComments':
         $commentController->showComments();
         break;
+    case 'deleteImageProduct':
+        $productController->deleteImageProduct($params[1]);
+        break;
     default:
     break;
 }

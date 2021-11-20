@@ -27,6 +27,7 @@
                             <button type="button" class="edit-product  btn btn-warning" data-price={$product->price} 
                             data-description="{$product->description }"
                             data-idbrand={$product->id_brand} data-component="{$product->component}" data-update={$product->id_product}><i class="bi bi-pencil"></i> Editar</button>
+                         <a class="delete-imagen btn btn-danger" href="deleteImageProduct/{$product->id_product}"><i class="bi bi-trash"></i> Borrar imagen</a> 
                         </td>
                     </tr>   
                     {/foreach}    
@@ -60,7 +61,7 @@
     <div class="forms-container">
 
      <!--new product Form-->
-        <form id="new-product-form" class="new-row-form product-form"  action="newProduct" method="POST"  class="needs-validation" >
+        <form id="new-product-form" class="new-row-form product-form"  action="newProduct" method="POST"  class="needs-validation" enctype="multipart/form-data">
         <div>
             <h3 class="form-title">Cargar Producto</h3>
         </div>          
@@ -86,6 +87,10 @@
                     {/foreach}        
                     </select>    
                 </div>
+                <div class="image-container">
+                    <label for="image">Selecciona la imagen</label>
+                    <input type="file" name="image" id="imageToUpload"> 
+                </div>
                  <div class="form-btn-container">
                     <div class="btn-on">
                         <button  class="btn btn-success" type="submit">Cargar Producto</button>
@@ -94,7 +99,7 @@
         </form>
 
     <!--edit product Form-->
-        <form id="edit-product-form" class="new-row-form product-form hide"  action="editProduct" method="POST"  class="needs-validation" >
+        <form id="edit-product-form" class="new-row-form product-form hide"  action="editProduct" method="POST"  class="needs-validation" enctype="multipart/form-data">
         <div>
             <h3 class="form-title">Editar Producto</h3>
         </div>          
@@ -119,6 +124,10 @@
                         <option  value={$brand->id_brand}>{$brand->brand_name}</option>        
                     {/foreach}        
                     </select>    
+                </div>
+                <div class="image-container">
+                    <label for="image">Selecciona la imagen</label>
+                    <input type="file" name="image" id="imageToUpload">
                 </div>
                  <div class="form-btn-container">
                     <div class="btn-on">
