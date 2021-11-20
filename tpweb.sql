@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 19, 2021 at 11:30 AM
+-- Generation Time: Nov 20, 2021 at 03:05 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -56,20 +56,29 @@ CREATE TABLE `Comment` (
   `comment` varchar(1024) NOT NULL,
   `punctuation` int(11) NOT NULL,
   `id_product` int(11) NOT NULL,
-  `id_user` int(11) NOT NULL
+  `id_user` int(11) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `Comment`
 --
 
-INSERT INTO `Comment` (`id_comment`, `comment`, `punctuation`, `id_product`, `id_user`) VALUES
-(1, 'TEST', 5, 60, 3),
-(2, 'Excelente calidad', 4, 60, 3),
-(3, 'aasas', 5, 61, 3),
-(4, '            \n         sadsad', 1, 68, 3),
-(5, '            \n         ', 1, 68, 1),
-(6, '            \n         sdasdasd', 1, 68, 1);
+INSERT INTO `Comment` (`id_comment`, `comment`, `punctuation`, `id_product`, `id_user`, `date`) VALUES
+(45, 'Excelente producto', 5, 68, 1, '2021-11-20 11:50:56'),
+(46, 'sa', 5, 62, 1, '2021-11-20 12:31:54'),
+(47, 'test', 5, 62, 1, '2021-11-20 12:32:33'),
+(48, 'hplaaa', 5, 62, 1, '2021-11-20 12:36:17'),
+(49, 'test puntuacion 4', 4, 62, 1, '2021-11-20 12:43:29'),
+(50, 'test bueno', 4, 62, 1, '2021-11-20 13:20:06'),
+(51, 'test muy bueno', 4, 62, 1, '2021-11-20 13:20:16'),
+(52, 'test regular', 2, 62, 1, '2021-11-20 13:20:28'),
+(53, 'test excelente', 5, 62, 1, '2021-11-20 13:21:24'),
+(54, 'test malo', 1, 62, 1, '2021-11-20 13:21:35'),
+(55, 'test BUENO', 3, 62, 1, '2021-11-20 13:21:46'),
+(56, 'test MUY BUENO', 4, 62, 1, '2021-11-20 13:21:57'),
+(57, 'ewewe', 5, 63, 1, '2021-11-20 13:45:33'),
+(58, 'aa', 5, 68, 1, '2021-11-20 13:50:41');
 
 -- --------------------------------------------------------
 
@@ -171,7 +180,7 @@ ALTER TABLE `Brand`
 -- AUTO_INCREMENT for table `Comment`
 --
 ALTER TABLE `Comment`
-  MODIFY `id_comment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_comment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
 -- AUTO_INCREMENT for table `Product`
