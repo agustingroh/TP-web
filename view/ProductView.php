@@ -11,8 +11,9 @@ class ProductView
     }
 
 
-    public function showAllProducts($products, $brands,$title)
+    public function showAllProducts($products, $brands,$title,$count = null)
     {      
+        $this->smarty->assign('count', $count);
         $this->smarty->assign('products', $products);
         $this->smarty->assign('brands', $brands); 
         $this->smarty->assign('title', $title);              

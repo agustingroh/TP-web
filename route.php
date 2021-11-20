@@ -23,8 +23,8 @@ if (!empty($_GET['action'])) {
 $params = explode('/', $action);
 
 switch ($params[0]) {
-    case 'home':  
-        $productController->getFilteredProducts($params[1]);
+    case 'home': 
+        $productController->getFilteredProducts($params[1],$params[2],$params[3]);
         break;
     case 'admins':
         $productController->adminView();

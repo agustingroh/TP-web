@@ -35,6 +35,10 @@
             {/foreach}
          </tbody>
       </table>
+      <p>{$count}</p>
+      {for $int=1 to {($count/5)|ceil}}
+             <a href="home/allbrands/5/{$int}">{$int}</a>    
+      {/for}
 
    </div>
 

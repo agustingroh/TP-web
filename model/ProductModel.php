@@ -10,15 +10,25 @@ class ProductModel
         $this->db = new PDO('mysql:host=localhost;dbname=tpweb;charset=utf8', 'root', '');
     }
 
-    public function getAll()
+    public function getAll($limit,$offset)
     {
-
+        echo $limit;
+        echo $offset;
         $stmt = $this->db->prepare("SELECT p.id_product,p.component,p.description,p.price,b.brand_name,b.id_brand FROM Product p
-        INNER JOIN Brand b ON b.id_brand=p.id_brand ORDER BY p.component");
+        INNER JOIN Brand b ON b.id_brand=p.id_brand ORDER BY p.component LIMIT $limit OFFSET $offset");
         $stmt->execute();
         $products = $stmt->fetchAll(PDO::FETCH_OBJ);          
         return $products;
     }
+
+    public function getCount(){
+        $stmt = $this->db->prepare("SELECT COUNT(*) AS count FROM Product");
+        $stmt->execute();
+        $count = $stmt->fetch(PDO::FETCH_OBJ); 
+        return $count;
+    }
+    
+    
 
 
     public function remove($id)
