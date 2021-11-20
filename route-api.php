@@ -12,7 +12,7 @@
     $router->addRoute("/comment/:ID", "DELETE", "CommentController", "deleteComment");    
     $router->addRoute("/comment", "POST", "CommentController", "addComment");
     $router->addRoute("/comment", "GET", "CommentController", "getAll");
-    $router->addRoute("/comment/:ID/:SORT", "GET", "CommentController", "getFilteredComments");
+ $router->addRoute("/comment/:ID/:SORT/:ORDER", "GET", "CommentController", "getFilteredComments");
 
     //run
      $router->route($_GET['resource'], $_SERVER['REQUEST_METHOD']); 

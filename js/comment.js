@@ -16,33 +16,52 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
     getData();
     async function getData() {
-        var productId = +window.location.href.split("/")[5];
-        console.log(productId);
-        const response = await fetch(`${URL}/${productId}`);
-        if (response.ok) {
-            const comments = await response.json();
-            view(comments);
+        try {
+            var productId = +window.location.href.split("/")[5];
+            const response = await fetch(`${URL}/${productId}`);
+            if (response.ok) {
+                const comments = await response.json();
+                if(comments.length > 0) 
+                    view(comments);
+                else   
+                    errorComment();
 
-        } else {
-            console.log("error");
+            } else {
+                errorComment();
+            }
+        } catch (error) {
+            errorComment();
         }
     }
 
     async function getSortData(sort) {
+        try{
         const params = sort.split(" ");
-        if (sort == "All")
+        if (sort === "All")
             getData();
         else {
             var productId = +window.location.href.split("/")[5];
-            const response = await fetch(`${URL}/${productId}/prueba`);
+            const response = await fetch(`${URL}/${productId}/${params[0]}/${params[1]}`);
             if (response.ok) {
-                const comments = await response.json();
-                view(comments);
-
+                const comments = await response.json();                
+                if(comments.length > 0)
+                    view(comments);
+                else
+                    errorComment();
             } else {
-                console.log("error");
+               errorComment();
             }
         }
+    } catch (error) {
+        errorComment();
+    }
+    }
+
+    function errorComment() {
+        let commentContainner = document.querySelector(".comment-area");
+        commentContainner.innerHTML = "";
+        commentContainner.innerHTML = `<p class="empty-comment">No se encontraron comentarios sobre el producto</p>`;
+
     }
 
     function view(comments) {
@@ -50,18 +69,36 @@ document.addEventListener("DOMContentLoaded", function (e) {
         let commentContainner = document.querySelector(".comment-area");
         commentContainner.innerHTML = "";
         comments.forEach(comment => {
-            commentContainner.innerHTML += `
+        commentContainner.innerHTML += `
            <div class="comment-division">
                 <div class="punctuation">
-                    <p class="comment"> Puntuacion: <span class="highlighted">${comment.punctuation}</span></p>
+                    <p class="comment"> Puntuacion: <span class="highlighted">${comment.punctuation}</span><span>&nbsp&nbsp ${comment.date}</span></p>
                 </div>         
             <p class="comment"> Comentario: ${comment.comment}</p>            
             </div>`;
-
         });
+
+
     }
 
-    // TO DO GET FORM DATA 
+    async function postComment(data) {
+        var productId = +window.location.href.split("/")[5];
+        const response = await fetch(`${URL}/${productId}`, {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+        if (response.ok) {
+            const comments = await response.json();
+            view(comments);
+        } else {
+            console.log("error");
+        }
+    }
+
+   
     function getCommentData() {
         let comment = document.querySelector("#user-comment").value;
         let punctuation = document.querySelector("#user-punctuation").value;
@@ -73,24 +110,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
         return data;
     }
 
-    async function postComment(data) {
-        console.log(data);
-        try {
-            const success = await fetch(URL, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify(data)
-            });
-            if (success) {
-                getData();
-            }
-        } catch (error) {
-            console.log(error);
-        }
-    }
+ 
 
 
 

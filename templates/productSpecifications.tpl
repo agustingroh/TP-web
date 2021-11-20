@@ -32,12 +32,29 @@
       <div class="comment-title">
          <h4 class="productTitle" >Comentarios del producto</h4>
       </div>
+      <div class="filters-container-select">
       <div>
+      <label>Ordenar por:</label>
            <select id="sort" name="filter">
-            <option value="All">mostrar todos</option>  
-               <option value="date asc" >comentarios antiguos</option>               
+            <option value="All">Mostrar todos</option>  
+               <option value="date asc" >Comentarios antiguos</option> 
+                 <option value="date desc" >Comentarios recientes</option> 
+               <option value="punctuation desc" >Menor calificacion</option>
+               <option value="punctuation asc" >Mayor calificacion</option>                  
             </select>
         
+      </div>
+      <div>
+      <label>Filtrar por puntuacion</label>
+      <select id="filter-punctuation" >  
+         <option value="All">Mostrar todos</option>    
+            <option value="5">Excelente</option>  
+               <option value="4" >Muy bueno</option> 
+                 <option value="3" >Bueno</option> 
+               <option value="2" >Regular</option>
+               <option value="1" >Malo</option>                  
+            </select>
+      </div>
       </div>
       <div class="comment-area">
       </div>     
@@ -55,8 +72,7 @@
                <option value="3">Bueno</option>
                <option value="2">Regular</option>
                <option value="1">Malo</option>          
-            </select>
-        
+            </select>        
          </div>
          <div>
             <button  class = "btn btn-success" type="submit">Enviar comentario</button>

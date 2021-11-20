@@ -19,7 +19,8 @@ class Route {
             return false;
         }
         $partsURL = explode("/", trim($url,'/'));
-        $partsRoute = explode("/", trim($this->url,'/'));
+        $partsRoute = explode("/", trim($this->url,'/'));   
+          
         if(count($partsRoute) != count($partsURL)){
             return false;
         }
@@ -31,6 +32,7 @@ class Route {
             else
             $this->params[$part] = $partsURL[$key];
         }
+       
         return true;
     }
     public function run(){
