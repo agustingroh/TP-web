@@ -168,18 +168,23 @@ class ProductController
 
 
 
-    public function getFilteredProducts($params)
+    public function getFilteredProducts($params,$limit,$page)
     {
      
         try {
             $brands = $this->brandModel->getAllBrands();
-            if (!$params || $params=='allbrands')
-                $products =  $this->productModel->getAll();
+            if (!$params || $params=='allbrands'){                 
+                $page = $page? $page : 1;                
+                $limit = $limit? $limit : 5;                       
+                $offset = ($limit * $page) - $limit;
+                $productCount = $this->productModel->getCount();                
+                $products =  $this->productModel->getAllPagination($limit,$offset);                
+            }
             else
                 $products = $this->productModel->getAllProductsByBrandId($params);           
 
             session_start();                      
-                $this->productView->showAllProducts($products, $brands,"Inicio");                 
+                $this->productView->showAllProducts($products, $brands,"Inicio",$productCount->count);                 
                          
         } catch (Exception $e) {
             $this->adminView->showMessage("Bad request", 400);

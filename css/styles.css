@@ -433,3 +433,12 @@ textarea{
 .bad{
     color: red;
 }
+
+.pagination-container{
+    display: flex;
+    justify-content: center;   
+}
+
+.table.table-striped{
+    height: 300px;
+}
