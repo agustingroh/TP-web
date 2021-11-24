@@ -98,16 +98,16 @@ class commentController
                 if ($params[":ORDER"] == 'asc')
                     $order = 'ASC';
                 else if ($params[":ORDER"] == 'desc')
-                    $order = 'DESC';
-                else
-                    $this->apiView->response(null, 404);
+                        $order = 'DESC';
+                    else
+                        $this->apiView->response(null, 404);
 
                 if ($params[":SORT"] == 'punctuation')
                     $sort = 'punctuation';
                 else if ($params[":SORT"] == 'date')
-                    $sort = 'date';
-                else
-                    $this->apiView->response(null, 404);
+                        $sort = 'date';
+                    else
+                        $this->apiView->response(null, 404);
 
                 $comments = $this->commentModel->getFiltered($order, $sort, $params[":ID"]);
                 $this->apiView->response($comments, 200);
