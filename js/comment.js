@@ -32,8 +32,11 @@ document.addEventListener("DOMContentLoaded", function (e) {
             const response = await fetch(`${URL}/${productId}`);
             if (response.ok) {
                 const comments = await response.json();
-                if (comments.length > 0)
+                if (comments.length > 0){
+                    let textarea = document.querySelector("#user-comment");
+                    textarea.value = "";
                     view(comments);
+                }
                 else
                     errorComment();
 

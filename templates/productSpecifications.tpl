@@ -40,8 +40,8 @@
             <option value="All">Mostrar todos</option>  
                <option value="date asc" >Comentarios antiguos</option> 
                  <option value="date desc" >Comentarios recientes</option> 
-               <option value="punctuation desc" >Menor calificacion</option>
-               <option value="punctuation asc" >Mayor calificacion</option>                  
+               <option value="punctuation desc" >Mayor calificacion</option>
+               <option value="punctuation asc" >Menor calificacion</option>                  
             </select>
         
       </div>
