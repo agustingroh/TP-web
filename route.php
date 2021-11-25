@@ -81,5 +81,6 @@ switch ($params[0]) {
         $productController->deleteImageProduct($params[1]);
         break;
     default:
-    break;
+        $productController->getFilteredProducts($params[1],$params[2],$params[3]);
+        break;
 }
