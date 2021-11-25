@@ -50,6 +50,7 @@ class UserController
             session_start();
             $_SESSION['role'] = $userData->role;
             $_SESSION['email'] = $userData->email;
+            $_SESSION['id_usuario'] = $userData->id_user;
 
             if ($_SESSION['role'] == UserRole::ADMIN)
                header("Location: " . BASE_URL  . "admins");
@@ -88,10 +89,18 @@ class UserController
       try {
          session_start();
          if ($_SESSION['role'] == UserRole::ADMIN && $_SESSION['email']) {
-            if ($userId == null || $role == null)
+
+            if ($userId == null || $role == null){
                $this->adminView->showMessage("Bad request", 400);
-            $this->userModel->edit($userId, $role);
-            header("Location:" . BASE_URL  . "admins");
+               die();
+            }
+
+            if ($userId == $_SESSION['id_usuario'])
+               $this->adminView->showMessage("no puedes cambiar tu rol", 400);
+            else{
+               $this->userModel->edit($userId, $role);
+               header("Location:" . BASE_URL  . "admins");
+            }
          } else {
             header("Location:" . BASE_URL  . "home");
          }

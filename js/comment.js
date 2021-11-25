@@ -28,20 +28,21 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
         try {
             var productId = +window.location.href.split("/")[5];
-            console.log(productId);
-            const response = await fetch(`${URL}/${productId}`);
-            if (response.ok) {
-                const comments = await response.json();
-                if (comments.length > 0){
-                    let textarea = document.querySelector("#user-comment");
-                    textarea.value = "";
-                    view(comments);
-                }
-                else
-                    errorComment();
+            if (productId){
+                const response = await fetch(`${URL}/${productId}`);
+                if (response.ok) {
+                    const comments = await response.json();
+                    if (comments.length > 0){
+                        let textarea = document.querySelector("#user-comment");
+                        textarea.value = "";
+                        view(comments);
+                    }
+                    else
+                        errorComment();
 
-            } else {
-                errorComment();
+                } else {
+                    errorComment();
+                }
             }
         } catch (error) {
             errorComment();
